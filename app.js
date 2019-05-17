@@ -27,8 +27,14 @@ function CreateDatabase(){
     });
 }
 CreateDatabase();
-const app = express();
 
+
+
+
+const app = express();
+app.get('/', (req,res)=>{
+    res.send('Hello World');
+});
 app.get('/getposts',(req,res)=>{
     let sql = 'SELECT * FROM posts';
     let query = db.query(sql, (err,results)=>{
