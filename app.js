@@ -1,5 +1,5 @@
 const express = require('express');
-
+const path = require('path');
 const mysql = require('mysql');
 
 const db= mysql.createConnection({
@@ -13,7 +13,8 @@ db.connect((err)=>{
         throw err;
     }
     console.log('MySQL Connecteeeed');
-})
+});
+
 function CreateDatabase(){
     var sql = 'DROP DATABASE IF EXISTS nodemysql'
     db.query(sql,(err,results)=>{
@@ -30,17 +31,16 @@ CreateDatabase();
 
 
 
-
 const app = express();
-app.get('/', (req,res)=>{
-    res.send('Hello World');
-});
+
+app.use(express.static(path.join(__dirname, 'public')));
+
 app.get('/getposts',(req,res)=>{
     let sql = 'SELECT * FROM posts';
     let query = db.query(sql, (err,results)=>{
         if (err) throw err;
         console.log(results);
-        res.send('Posts fetched...');
+        res.sendFile(path.join(__dirname), 'public', 'index.html');
     });
 });
 
