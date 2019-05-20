@@ -4,12 +4,12 @@ const mysql = require('mysql');
 const configDatabse = require('./configuration/mysql');
 const configServer = require('./configuration/server');
 
-configServer.openServer();
+
+const app = express();
+configServer.openServer(app);
 configDatabse.CreateDatabase();
 //configDatabse.FillDatabase();
 
-
-const app = express();
 
 app.use(express.static(path.join(__dirname, 'public')));
 
