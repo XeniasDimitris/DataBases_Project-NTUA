@@ -1,23 +1,19 @@
 const express = require('express');
 const path = require('path');
-const mysql = require('mysql');
-const configDatabse = require('./configuration/mysql');
+const configDatabase = require('./configuration/database');
 const configServer = require('./configuration/server');
+const logger = require('./middlewares/logger');
+
+
 
 
 const app = express();
 configServer.openServer(app);
-configDatabse.CreateDatabase();
-//configDatabse.FillDatabase();
+configDatabase.CreateDatabase;
+configDatabase.FillDatabase;
 
+//app.use(logger); // INIT MIDDLEWARE
 
-app.use(express.static(path.join(__dirname, 'public')));
+app.use(express.static(path.join(__dirname, 'public'))); // public is static folder MIDDLEWARE
 
-app.get('/getposts',(req,res)=>{
-    let sql = 'SELECT * FROM posts';
-    let query = db.query(sql, (err,results)=>{
-        if (err) throw err;
-        console.log(results);
-        res.sendFile(path.join(__dirname), 'public', 'index.html');
-    });
-});
+app.use('/api/members', require('./routes/posts'));

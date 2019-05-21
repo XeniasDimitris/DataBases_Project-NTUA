@@ -1,6 +1,5 @@
 const mysql = require('mysql');
 
-
 const db = mysql.createConnection({
     host     : 'localhost',
     user     : 'root',
@@ -111,7 +110,7 @@ function CreateDatabase(){
     });
 
     // table written_by
-    sql = 'CREATE TABLE `Baseis2019`.`wriiten_by` ( `ISBN` INT NOT NULL , `authID` INT NOT NULL , PRIMARY KEY (`ISBN`, `authID`)) ENGINE = InnoDB;';
+    sql = 'CREATE TABLE `Baseis2019`.`written_by` ( `ISBN` INT NOT NULL , `authID` INT NOT NULL , PRIMARY KEY (`ISBN`, `authID`)) ENGINE = InnoDB;';
     db.query(sql,(err,results)=>{
         if (err) throw err;
     });
@@ -177,19 +176,26 @@ function CreateDatabase(){
     db.query(sql,(err,results)=>{
         if (err) throw err;
     });
-    sql = 'ALTER TABLE `Baseis2019`.`wriiten_by` ADD FOREIGN KEY (`ISBN`) REFERENCES `Book`(`ISBN`) ON DELETE RESTRICT ON UPDATE RESTRICT;';
+    sql = 'ALTER TABLE `Baseis2019`.`written_by` ADD FOREIGN KEY (`ISBN`) REFERENCES `Book`(`ISBN`) ON DELETE RESTRICT ON UPDATE RESTRICT;';
     db.query(sql,(err,results)=>{
         if (err) throw err;
     });
-    sql = 'ALTER TABLE `Baseis2019`.`wriiten_by` ADD FOREIGN KEY (`authID`) REFERENCES `author`(`authID`) ON DELETE RESTRICT ON UPDATE RESTRICT;';
+    sql = 'ALTER TABLE `Baseis2019`.`written_by` ADD FOREIGN KEY (`authID`) REFERENCES `author`(`authID`) ON DELETE RESTRICT ON UPDATE RESTRICT;';
     db.query(sql,(err,results)=>{
         if (err) throw err;
     });
+    console.log('Database created');
+    
 };
 
 function FillDatabase(){
+    sql = 'INSERT INTO `Baseis2019`.`author` (`authID`, `AFirst`, `ALast`, `Abirthdate`) VALUES (\'1\', \'xenias\', \'dimitrios\', \'2019-05-24\')';
+    db.query(sql,(err,results)=>{
+        if (err) throw err;
+        console.log('Database Filled');
+    });
+}
 
-};
-
-module.exports.CreateDatabase = CreateDatabase;
-module.exports.FillDatabase = FillDatabase;
+module.exports.CreateDatabase = CreateDatabase();
+module.exports.FillDatabase = FillDatabase();
+module.exports.db = db;
