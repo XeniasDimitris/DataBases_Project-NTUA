@@ -35,7 +35,7 @@ function fillDatabase(db) {
     //Publisher imports
     sql = "INSERT INTO `Baseis2019`.`publisher` (`pubName`, `estYear`, `street`, `number`, `postalCode`) VALUES" +
     " ('Amber Collier', 1960, 'Coventry Court', 100, 10247)," +
-    "('Ella Gardiner', 1958, 'Crummit Lane', 65, 87511)," +
+    " ('Ella Gardiner', 1958, 'Crummit Lane', 65, 87511)," +
     " ('Freya Carr', 1987, 'Moonglight Sonata', 56, 58745)," +
     " ('Katherine Baker', 1999, 'Elk Saint Lake', 54, 96665)," +
     " ('Keira Watson', 1935, 'Evergreen Lane', 987, 87747)," +

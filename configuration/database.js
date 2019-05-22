@@ -195,3 +195,4 @@ function FillDatabase(){
 
 module.exports.CreateDatabase = CreateDatabase();
 module.exports.FillDatabase = FillDatabase();
+module.exports.db = db;
