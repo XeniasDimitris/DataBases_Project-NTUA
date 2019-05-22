@@ -48,7 +48,7 @@ function CreateDatabase(){
 
     // table category
     sql = 'CREATE TABLE `Baseis2019`.`category` ( `categoryName` VARCHAR(50) NOT NULL , `supercategoryName` VARCHAR(50) ' +
-        ' , PRIMARY KEY (`categoryName`)) ENGINE = InnoDB';
+        ', PRIMARY KEY (`categoryName`)) ENGINE = InnoDB';
     db.query(sql,(err,results)=>{
         if (err) throw err4;
     });
@@ -112,8 +112,8 @@ function CreateDatabase(){
 
     // table written_by
     sql = 'CREATE TABLE `Baseis2019`.`written_by` ( `ISBN` VARCHAR(30) NOT NULL , `authID` INT NOT NULL , PRIMARY KEY (`ISBN`, `authID`)) ENGINE = InnoDB;';
-    db.query(sql,(err,results)=>{
-        if (err) throw err13;
+    db.query(sql,(err,results)=>{``
+        if (err) throw err;
     });
 
     // put Foreign Keys in tables
