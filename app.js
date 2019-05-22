@@ -18,7 +18,7 @@ configDatabase.FillDatabase;
 app.use('/show',show);
 app.use('/insert',insert);
 app.use('/delete',deleteit);
-app.use('update',update);
+app.use('/update',update);
 //app.use(logger); // INIT MIDDLEWARE
 app.use(express.static(path.join(__dirname, 'public'))); // public is static folder MIDDLEWARE
 

@@ -43,6 +43,6 @@ router.post('/members',members_controller.members_update_post);
 router.post('/permanent_employees',permanent_employees_controller.permanent_employees_update_post);
 router.post('/publishers',publishers_controller.publishers_update_post);
 router.post('/reminder',reminder_controller.reminder_update_post);
-router.get('/temporary_employees',temporary_employees_controller.temporary_employees_update_post);
+router.post('/temporary_employees',temporary_employees_controller.temporary_employees_update_post);
 router.post('/written_by',written_by_controller.written_by_update_post);
 module.exports = router;
