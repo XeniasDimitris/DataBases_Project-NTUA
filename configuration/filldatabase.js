@@ -1,7 +1,7 @@
 function fillDatabase(db) {
 
     //Author Imports
-sql = "INSERT INTO `Baseis2019`.`author` (`authID`, `AFirst`, `ALast`, `Abirthdate`) VALUES "+
+    sql = "INSERT INTO `Baseis2019`.`author` (`authID`, `AFirst`, `ALast`, `Abirthdate`) VALUES "+
     " (9566, 'Mariyam', 'Mendez', '2019-05-01'), " +
     " (9568, 'Miah', 'Goodwin', '2019-05-02'), " +
     " (9569, 'Reem', 'Odonnell', '2019-05-04'), " +
@@ -14,10 +14,10 @@ sql = "INSERT INTO `Baseis2019`.`author` (`authID`, `AFirst`, `ALast`, `Abirthda
     " (9576, 'Amie', 'Cassy', '2018-09-25');"
     db.query(sql,(err,results)=>{
         if (err) throw err;
-        console.log('Database Filled');
     });
-//Member Imports
-sql = "INSERT INTO `Baseis2019`.`member` (`memberID`, `MFirst`, `MLast`, `Street`, `number`, `postalCode`, `Mbirthdate`) VALUES " +
+    
+    //Member Imports
+    sql = "INSERT INTO `Baseis2019`.`member` (`memberID`, `MFirst`, `MLast`, `Street`, `number`, `postalCode`, `Mbirthdate`) VALUES " +
     " (1, 'Maddison', 'Houghton', 'Caerfai Bay Road', 85, 22079, '2018-09-03'), " +
     " (2, 'Declan ', ' Elliott', 'Cabell Avenue', 1608, 6320, '2019-05-09')," +
     " (3, 'Samantha', 'Miah', 'Jones Street', 4674, 76148, '2018-09-17')," +
@@ -30,10 +30,10 @@ sql = "INSERT INTO `Baseis2019`.`member` (`memberID`, `MFirst`, `MLast`, `Street
     " (11, 'Laura', 'Dalle', 'Foley Street', 147, 21210, '2018-12-31');"
     db.query(sql,(err,results)=>{
         if (err) throw err;
-        console.log('Database Filled'); 
     });
-//Publisher imports
-sql = "INSERT INTO `Baseis2019`.`publisher` (`pubName`, `estYear`, `street`, `number`, `postalCode`) VALUES" +
+    
+    //Publisher imports
+    sql = "INSERT INTO `Baseis2019`.`publisher` (`pubName`, `estYear`, `street`, `number`, `postalCode`) VALUES" +
     " ('Amber Collier', 1960, 'Coventry Court', 100, 10247)," +
     "('Ella Gardiner', 1958, 'Crummit Lane', 65, 87511)," +
     " ('Freya Carr', 1987, 'Moonglight Sonata', 56, 58745)," +
@@ -46,10 +46,9 @@ sql = "INSERT INTO `Baseis2019`.`publisher` (`pubName`, `estYear`, `street`, `nu
     " ('Yvonne Pfaff', 1974, 'Gnatty Creek Road', 545, 96696);"
     db.query(sql,(err,results)=>{
         if (err) throw err;
-        console.log('Database Filled');
     });
-//Books Imports
-sql = "INSERT INTO `Baseis2019`.`Book` (`ISBN`, `title`, `pubYear`, `numpages`, `pubName`) VALUES" +
+    //Books Imports
+    sql = "INSERT INTO `Baseis2019`.`Book` (`ISBN`, `title`, `pubYear`, `numpages`, `pubName`) VALUES" +
     " ('978-1-60309-013-1', 'Johny Boo', 2010, 145, 'Kristin Schroder')," +
     " ('978-1-60309-025-4', 'American Elf', 1974, 123, 'Keira Watson')," +
     " ('978-1-60309-047-6', 'August Moon', 1955, 654, 'Keira Watson')," +
@@ -62,15 +61,11 @@ sql = "INSERT INTO `Baseis2019`.`Book` (`ISBN`, `title`, `pubYear`, `numpages`, 
     " ('978-1-891830-19-8', 'Poison', 1997, 623, 'Keira Watson')," +
     " ('978-1-891830-71-6', 'AEIOU', 1963, 324, 'Yvonne Pfaff')," +
     " ('978-1-891830-75-4', '110 Repc', 1987, 456, 'Amber Collier')," +
-    " ('978-1-891830-90-7', 'Korgi', 2011, 187, 'Ella Gardiner');"
-    " (11, 'Laura', 'Dalle', 'Foley Street', 147, 21210, '2018-12-31');";
+    " ('978-1-891830-90-7', 'Korgi', 2011, 187, 'Ella Gardiner');";
     db.query(sql,(err,results)=>{
         if (err) throw err;
         console.log('Database Filled');
     });
-
-
-
 };
 
 module.exports.fillDatabase = fillDatabase;
