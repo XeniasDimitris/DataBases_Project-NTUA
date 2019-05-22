@@ -5,12 +5,13 @@ const configServer = require('./configuration/server');
 const logger = require('./middlewares/logger');
 
 
-
+//console.log(configDatabase.db);
 
 const app = configServer.app;
 configServer.openServer;
 configDatabase.CreateDatabase;
 configDatabase.FillDatabase;
+
 app.use(logger); // INIT MIDDLEWARE
 
 app.use(express.static(path.join(__dirname, 'public'))); // public is static folder MIDDLEWARE
