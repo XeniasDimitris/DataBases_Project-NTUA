@@ -189,7 +189,12 @@ function CreateDatabase(){
 };
 
 function FillDatabase(){
-    sql = 'INSERT INTO `Baseis2019`.`author` (`authID`, `AFirst`, `ALast`, `Abirthdate`) VALUES (\'1\', \'xenias\', \'dimitrios\', \'2019-05-24\')';
+    var sql = 'INSERT INTO `Baseis2019`.`author` (`authID`, `AFirst`, `ALast`, `Abirthdate`) VALUES (\'1\', \'xenias\', \'dimitrios\', \'2019-05-24\')';
+    db.query(sql,(err,results)=>{
+        if (err) throw err;
+        console.log('Database Filled');
+    });
+    sql = "INSERT INTO `Baseis2019`.`author` (`authID`, `AFirst`, `ALast`, `Abirthdate`) VALUES ('7', 'twertw', 'ertwert', '2019-05-22')";
     db.query(sql,(err,results)=>{
         if (err) throw err;
         console.log('Database Filled');

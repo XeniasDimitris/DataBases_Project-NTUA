@@ -12,7 +12,7 @@ configServer.openServer(app);
 configDatabase.CreateDatabase;
 configDatabase.FillDatabase;
 
-//app.use(logger); // INIT MIDDLEWARE
+app.use(logger); // INIT MIDDLEWARE
 
 app.use(express.static(path.join(__dirname, 'public'))); // public is static folder MIDDLEWARE
 
