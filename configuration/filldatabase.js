@@ -1,6 +1,7 @@
 function fillDatabase(db) {
+
     //Author Imports
-    sql = "INSERT INTO `Baseis2019`.`author` (`authID`, `AFirst`, `ALast`, `Abirthdate`) VALUES "+
+sql = "INSERT INTO `Baseis2019`.`author` (`authID`, `AFirst`, `ALast`, `Abirthdate`) VALUES "+
     " (9566, 'Mariyam', 'Mendez', '2019-05-01'), " +
     " (9568, 'Miah', 'Goodwin', '2019-05-02'), " +
     " (9569, 'Reem', 'Odonnell', '2019-05-04'), " +
@@ -15,12 +16,8 @@ function fillDatabase(db) {
         if (err) throw err;
         console.log('Database Filled');
     });
-
-<<<<<<< HEAD
+//Member Imports
 sql = "INSERT INTO `Baseis2019`.`member` (`memberID`, `MFirst`, `MLast`, `Street`, `number`, `postalCode`, `Mbirthdate`) VALUES " +
-=======
-    sql = "INSERT INTO `Baseis2019`.`member` (`memberID`, `MFirst`, `MLast`, `Street`, `number`, `postalCode`, `Mbirthdate`) VALUES " +
->>>>>>> 35130a7e79049c6dedaf489b4dafd3fabb89cfb9
     " (1, 'Maddison', 'Houghton', 'Caerfai Bay Road', 85, 22079, '2018-09-03'), " +
     " (2, 'Declan ', ' Elliott', 'Cabell Avenue', 1608, 6320, '2019-05-09')," +
     " (3, 'Samantha', 'Miah', 'Jones Street', 4674, 76148, '2018-09-17')," +
@@ -30,13 +27,12 @@ sql = "INSERT INTO `Baseis2019`.`member` (`memberID`, `MFirst`, `MLast`, `Street
     " (8, 'Anna', 'Donely', 'Jett Lane', 163, 15446, '2018-06-24')," +
     " (9, 'Zachary', 'Dobson', 'Ralhph Drive', 412, 65378, '2018-09-30')," +
     " (10, 'Henry', 'Jones', 'Wilson Street', 110, 55477, '2018-11-11')," +
-<<<<<<< HEAD
     " (11, 'Laura', 'Dalle', 'Foley Street', 147, 21210, '2018-12-31');"
     db.query(sql,(err,results)=>{
         if (err) throw err;
         console.log('Database Filled'); 
     });
-
+//Publisher imports
 sql = "INSERT INTO `Baseis2019`.`publisher` (`pubName`, `estYear`, `street`, `number`, `postalCode`) VALUES" +
     " ('Amber Collier', 1960, 'Coventry Court', 100, 10247)," +
     "('Ella Gardiner', 1958, 'Crummit Lane', 65, 87511)," +
@@ -52,7 +48,7 @@ sql = "INSERT INTO `Baseis2019`.`publisher` (`pubName`, `estYear`, `street`, `nu
         if (err) throw err;
         console.log('Database Filled');
     });
-
+//Books Imports
 sql = "INSERT INTO `Baseis2019`.`Book` (`ISBN`, `title`, `pubYear`, `numpages`, `pubName`) VALUES" +
     " ('978-1-60309-013-1', 'Johny Boo', 2010, 145, 'Kristin Schroder')," +
     " ('978-1-60309-025-4', 'American Elf', 1974, 123, 'Keira Watson')," +
@@ -67,18 +63,13 @@ sql = "INSERT INTO `Baseis2019`.`Book` (`ISBN`, `title`, `pubYear`, `numpages`, 
     " ('978-1-891830-71-6', 'AEIOU', 1963, 324, 'Yvonne Pfaff')," +
     " ('978-1-891830-75-4', '110 Repc', 1987, 456, 'Amber Collier')," +
     " ('978-1-891830-90-7', 'Korgi', 2011, 187, 'Ella Gardiner');"
-=======
     " (11, 'Laura', 'Dalle', 'Foley Street', 147, 21210, '2018-12-31');";
->>>>>>> 35130a7e79049c6dedaf489b4dafd3fabb89cfb9
     db.query(sql,(err,results)=>{
         if (err) throw err;
         console.log('Database Filled');
     });
-<<<<<<< HEAD
 
 
-=======
->>>>>>> 35130a7e79049c6dedaf489b4dafd3fabb89cfb9
 
 };
 
