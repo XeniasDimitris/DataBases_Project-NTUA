@@ -26,7 +26,7 @@ function fillDatabase(db) {
     " (8, 'Anna', 'Donely', 'Jett Lane', 163, 15446, '2018-06-24')," +
     " (9, 'Zachary', 'Dobson', 'Ralhph Drive', 412, 65378, '2018-09-30')," +
     " (10, 'Henry', 'Jones', 'Wilson Street', 110, 55477, '2018-11-11')," +
-    " (11, 'Laura', 'Dalle', 'Foley Street', 147, 21210, '2018-12-31');"
+    " (11, 'Laura', 'Dalle', 'Foley Street', 147, 21210, '2018-12-31');";
     db.query(sql,(err,results)=>{
         if (err) throw err;
         console.log('Database Filled');
