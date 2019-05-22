@@ -8,13 +8,15 @@ const insert = require('./routes/insert');
 const show = require('./routes/show');
 const deleteit = require('./routes/delete');
 const update = require('./routes/update');
-
-
+const bodyParser = require('body-parser');
 
 configServer.openServer(app);
 configDatabase.CreateDatabase;
 configDatabase.FillDatabase;
 
+app.set('view engine', 'ejs');
+app.use(bodyParser.urlencoded({extended:false}));
+app.use(bodyParser.json());
 
 app.use('/show',show);
 app.use('/insert',insert);

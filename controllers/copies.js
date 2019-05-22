@@ -1,11 +1,12 @@
 const database = require('./../configuration/database');
 const db = database.db;
+const path = require('path');
 
 exports.copies_list = function(req,res){
     var sql = ' SELECT * FROM `Baseis2019`.`copies`';
     db.query(sql,(err,results)=>{
         if (err) throw err;
-        res.send(results);
+        res.render('show', {table : path.basename(__filename,'.js'), items : results});
     });
 };
 
