@@ -32,8 +32,13 @@ function CreateDatabase(){
     });
 
     // table Book
+<<<<<<< HEAD
     sql = 'CREATE TABLE `Baseis2019`.`Book` ( `ISBN` INT NOT NULL , `title` VARCHAR(30) NOT NULL , `pubYear` INT UNSIGNED NOT NULL ,' +
         '`numpages` INT UNSIGNED NOT NULL , `pubName` VARCHAR(50) NOT NULL , PRIMARY KEY (`ISBN`)) ENGINE = InnoDB;';
+=======
+    sql = 'CREATE TABLE `Baseis2019`.`Book` ( `ISBN` VARCHAR(30) NOT NULL , `title` VARCHAR(30) NOT NULL , `pubYear` INT NULL ,' +
+        '`numpages` INT NOT NULL , `pubName` VARCHAR(50) NOT NULL , PRIMARY KEY (`ISBN`)) ENGINE = InnoDB;';
+>>>>>>> 92f8819ad711ea98b7463f897048e6c3c4c751dc
     db.query(sql,(err,results)=>{
         if (err) throw err;
     });
@@ -53,7 +58,7 @@ function CreateDatabase(){
     });
 
     // table copies
-    sql = 'CREATE TABLE `Baseis2019`.`copies` ( `ISBN` INT NOT NULL , `copyNr` INT NOT NULL , `shelf` INT NOT NULL , PRIMARY'+
+    sql = 'CREATE TABLE `Baseis2019`.`copies` ( `ISBN`  VARCHAR(30) NOT NULL , `copyNr` INT NOT NULL , `shelf` INT NOT NULL , PRIMARY'+
            ' KEY (`ISBN`, `copyNr`)) ENGINE = InnoDB;';
     db.query(sql,(err,results)=>{
         if (err) throw err;
@@ -88,21 +93,21 @@ function CreateDatabase(){
     });
 
     // table borrows
-    sql = 'CREATE TABLE `Baseis2019`.`borrows` ( `memberID` INT NOT NULL , `ISBN` INT NOT NULL , `copyNr` INT NOT NULL , `date_of_borrowing` '+
+    sql = 'CREATE TABLE `Baseis2019`.`borrows` ( `memberID` INT NOT NULL , `ISBN` VARCHAR(30) NOT NULL , `copyNr` INT NOT NULL , `date_of_borrowing` '+
         'DATE NOT NULL , `date_of_return` DATE NOT NULL , PRIMARY KEY (`memberID`, `ISBN`, `copyNr`, `date_of_borrowing`)) ENGINE = InnoDB;';
     db.query(sql,(err,results)=>{
         if (err) throw err;
     });
 
     // table belongs_to
-    sql = 'CREATE TABLE `Baseis2019`.`belongs_to` ( `ISBN` INT NOT NULL , `categoryName`  VARCHAR(50) NOT NULL , PRIMARY KEY (`ISBN`, `categoryName`)) '+
+    sql = 'CREATE TABLE `Baseis2019`.`belongs_to` ( `ISBN` VARCHAR(30) NOT NULL , `categoryName`  VARCHAR(50) NOT NULL , PRIMARY KEY (`ISBN`, `categoryName`)) '+
         'ENGINE = InnoDB;';
     db.query(sql,(err,results)=>{
         if (err) throw err;
     });
 
     // table reminder 
-    sql = 'CREATE TABLE `Baseis2019`.`reminder` ( `empID` INT NOT NULL , `memberID` INT NOT NULL , `ISBN` INT NOT NULL , `copyNr` INT NOT NULL , '+
+    sql = 'CREATE TABLE `Baseis2019`.`reminder` ( `empID` INT NOT NULL , `memberID` INT NOT NULL , `ISBN` VARCHAR(30) NOT NULL , `copyNr` INT NOT NULL , '+
         '`date_of_borrowing` DATE NOT NULL , `date_of_reminder` DATE NOT NULL , PRIMARY KEY (`empID`, `memberID`, `ISBN`, `copyNr`, `date_of_borrowing`, '+
         '`date_of_reminder`)) ENGINE = InnoDB;';
     db.query(sql,(err,results)=>{
@@ -110,7 +115,7 @@ function CreateDatabase(){
     });
 
     // table written_by
-    sql = 'CREATE TABLE `Baseis2019`.`written_by` ( `ISBN` INT NOT NULL , `authID` INT NOT NULL , PRIMARY KEY (`ISBN`, `authID`)) ENGINE = InnoDB;';
+    sql = 'CREATE TABLE `Baseis2019`.`written_by` ( `ISBN` VARCHAR(30) NOT NULL , `authID` INT NOT NULL , PRIMARY KEY (`ISBN`, `authID`)) ENGINE = InnoDB;';
     db.query(sql,(err,results)=>{
         if (err) throw err;
     });
