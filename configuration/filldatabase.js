@@ -64,7 +64,6 @@ function fillDatabase(db) {
     " ('978-1-891830-90-7', 'Korgi', 2011, 187, 'Ella Gardiner');"
     db.query(sql,(err,results)=>{
         if (err) throw err;
-        console.log('Database Filled');
     });
     //Copies Imports
     sql = "INSERT INTO `Baseis2019`.`copies` (`ISBN`, `copyNr`, `shelf`) VALUES" +
@@ -84,7 +83,6 @@ function fillDatabase(db) {
         "('978-1-891830-90-7', 7, 2313);"
         db.query(sql,(err,results)=>{
             if (err) throw err;
-           console.log('Database Filled');
         });
     //Employee Imports
     sql = "INSERT INTO `Baseis2019`.`employee` (`empID`, `EFirst`, `ELast`, `salary`) VALUES" +
@@ -102,7 +100,6 @@ function fillDatabase(db) {
         "(12, 'Hung', 'Chin', 745);"
         db.query(sql,(err,results)=>{
             if (err) throw err;
-            console.log('Database Filled');
         });
     
     //Permant Employees Imports
@@ -115,7 +112,6 @@ function fillDatabase(db) {
         "(10, '2019-05-04');"
         db.query(sql,(err,results)=>{
             if (err) throw err;
-           console.log('Database Filled');
         });
     //Temporary Employees Imports
     sql = "INSERT INTO `Baseis2019`.`temporary_employee` (`empID`, `ContactNumb`) VALUES" +
@@ -127,7 +123,6 @@ function fillDatabase(db) {
         "(12, 604441479);"
         db.query(sql,(err,results)=>{
             if (err) throw err;
-            console.log('Database Filled');
         });
     //Borrows Imports
     sql = "INSERT INTO `Baseis2019`.`borrows` (`memberID`, `ISBN`, `copyNr`, `date_of_borrowing`, `date_of_return`) VALUES" +
@@ -140,7 +135,6 @@ function fillDatabase(db) {
         "(10, '978-1-60309-047-6', 6, '2019-05-04', '2019-05-18');"
         db.query(sql,(err,results)=>{
             if (err) throw err;
-           console.log('Database Filled');
         });
     //Category Imports
     sql = "INSERT INTO `Baseis2019`.`category` (`categoryName`, `supercategoryName`) VALUES" +
@@ -157,7 +151,6 @@ function fillDatabase(db) {
         "('Physics', 'Science');"
         db.query(sql,(err,results)=>{
             if (err) throw err;
-            console.log('Database Filled');
         });
     //Belongs to Imports
     sql = "INSERT INTO `Baseis2019`.`belongs_to` (`ISBN`, `categoryName`) VALUES" +
@@ -177,7 +170,6 @@ function fillDatabase(db) {
         "('978-1-891830-90-7', 'Science');"
         db.query(sql,(err,results)=>{
             if (err) throw err;
-            console.log('Database Filled');
         });
     //written by Imports
     sql = "INSERT INTO `Baseis2019`.`written_by` (`ISBN`, `authID`) VALUES" +
@@ -193,7 +185,6 @@ function fillDatabase(db) {
         "('978-1-891830-90-7', 9573);"
         db.query(sql,(err,results)=>{
             if (err) throw err;
-            console.log('Database Filled');
         });
 
         //Reminder Imports
