@@ -48,7 +48,7 @@ function CreateDatabase(){
 
     // table category
     sql = 'CREATE TABLE `Baseis2019`.`category` ( `categoryName` VARCHAR(50) NOT NULL , `supercategoryName` VARCHAR(50) ' +
-        'NOT NULL , PRIMARY KEY (`categoryName`)) ENGINE = InnoDB';
+        ', PRIMARY KEY (`categoryName`)) ENGINE = InnoDB';
     db.query(sql,(err,results)=>{
         if (err) throw err4;
     });

@@ -1,7 +1,7 @@
 function fillDatabase(db) {
 
     //Author Imports
-    sql = "INSERT INTO `Baseis2019`.`author` (`authID`, `AFirst`, `ALast`, `Abirthdate`) VALUES "+
+    var sql = "INSERT INTO `Baseis2019`.`author` (`authID`, `AFirst`, `ALast`, `Abirthdate`) VALUES "+
     " (9566, 'Mariyam', 'Mendez', '2019-05-01'), " +
     " (9568, 'Miah', 'Goodwin', '2019-05-02'), " +
     " (9569, 'Reem', 'Odonnell', '2019-05-04'), " +
@@ -66,6 +66,7 @@ function fillDatabase(db) {
         if (err) throw err;
         console.log('Database Filled');
     });
+    
 };
 
 module.exports.fillDatabase = fillDatabase;
