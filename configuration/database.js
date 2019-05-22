@@ -48,11 +48,7 @@ function CreateDatabase(){
 
     // table category
     sql = 'CREATE TABLE `Baseis2019`.`category` ( `categoryName` VARCHAR(50) NOT NULL , `supercategoryName` VARCHAR(50) ' +
-<<<<<<< HEAD
         ' , PRIMARY KEY (`categoryName`)) ENGINE = InnoDB';
-=======
-        ', PRIMARY KEY (`categoryName`)) ENGINE = InnoDB';
->>>>>>> 7e5ba8caa6cdec23e34a3ec211a86ae0be49eddc
     db.query(sql,(err,results)=>{
         if (err) throw err4;
     });
@@ -116,13 +112,8 @@ function CreateDatabase(){
 
     // table written_by
     sql = 'CREATE TABLE `Baseis2019`.`written_by` ( `ISBN` VARCHAR(30) NOT NULL , `authID` INT NOT NULL , PRIMARY KEY (`ISBN`, `authID`)) ENGINE = InnoDB;';
-<<<<<<< HEAD
-    db.query(sql,(err,results)=>{``
-        if (err) throw err;
-=======
     db.query(sql,(err,results)=>{
         if (err) throw err13;
->>>>>>> 7e5ba8caa6cdec23e34a3ec211a86ae0be49eddc
     });
 
     // put Foreign Keys in tables
