@@ -1,6 +1,5 @@
 function fillDatabase(db) {
 
-    console.log(db);
     //Author Imports
     sql = "INSERT INTO `Baseis2019`.`author` (`authID`, `AFirst`, `ALast`, `Abirthdate`) VALUES "+
     " (9566, 'Mariyam', 'Mendez', '2019-05-01'), " +
@@ -12,7 +11,7 @@ function fillDatabase(db) {
     " (9573, 'Naomi', 'Gloom', '2019-01-06'), " +
     " (9574, 'Nick', 'Frank', '2019-01-23'), " +
     " (9575, 'Pan', 'Biggy', '2018-08-06'), " +
-    " (9576, 'Amie', 'Cassy', '2018-09-25');"
+    " (9576, 'Amie', 'Cassy', '2018-09-25');";
     db.query(sql,(err,results)=>{
         if (err) throw err;
         console.log('Database Filled');
