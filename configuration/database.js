@@ -1,6 +1,5 @@
 const mysql = require('mysql');
 const fillDatabase = require('./filldatabase');
-
 const db = mysql.createConnection({
     host     : 'localhost',
     user     : 'root',
@@ -195,4 +194,3 @@ function FillDatabase(){
 
 module.exports.CreateDatabase = CreateDatabase();
 module.exports.FillDatabase = FillDatabase();
-module.exports.db = db;

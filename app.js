@@ -7,8 +7,8 @@ const logger = require('./middlewares/logger');
 
 //console.log(configDatabase.db);
 
-const app = configServer.app;
-configServer.openServer;
+const app = express();
+configServer.openServer(app);
 configDatabase.CreateDatabase;
 configDatabase.FillDatabase;
 
