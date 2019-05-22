@@ -7,12 +7,11 @@ const logger = require('./middlewares/logger');
 
 
 
-const app = express();
-configServer.openServer(app);
+const app = configServer.app;
+configServer.openServer;
 configDatabase.CreateDatabase;
 configDatabase.FillDatabase;
-
-//app.use(logger); // INIT MIDDLEWARE
+app.use(logger); // INIT MIDDLEWARE
 
 app.use(express.static(path.join(__dirname, 'public'))); // public is static folder MIDDLEWARE
 
