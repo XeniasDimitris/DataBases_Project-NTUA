@@ -6,8 +6,10 @@ exports.publishers_list = function(req,res){
     var sql = ' SELECT pubName,estYear FROM `Baseis2019`.`publisher`';
     db.query(sql,(err,results)=>{
         if (err) throw err;
-        res.send(results);
-        //res.render('show', {table : path.basename(__filename,'.js'), items : results});
+        res.render('show_data', {
+            table : path.basename(__filename,'.js'), 
+            item : results
+        });
     });
 };
 

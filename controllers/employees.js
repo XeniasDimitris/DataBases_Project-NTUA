@@ -6,8 +6,10 @@ exports.employees_list = function(req,res){
     var sql = ' SELECT EFirst,ELast,salary FROM `Baseis2019`.`employee`';
     db.query(sql,(err,results)=>{
         if (err) throw err;
-        res.send(results);
-        //res.render('show', {table : path.basename(__filename,'.js'), items : results});
+        res.render('show_data', {
+            table : path.basename(__filename,'.js'), 
+            item : results
+        });
     });
 };
 

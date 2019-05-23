@@ -8,8 +8,10 @@ exports.members_list = function(req,res){
     var sql = ' SELECT  memberID, MLast, MFirst  FROM `Baseis2019`.`member`';
     db.query(sql,(err,results)=>{
         if (err) throw err;
-        res.send(results);
-        //res.render('show', {table : path.basename(__filename,'.js'), items : results});
+        res.render('show_data', {
+            table : path.basename(__filename,'.js'), 
+            item : results
+        });
     });
 };
 

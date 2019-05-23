@@ -6,7 +6,10 @@ exports.written_by_list = function(req,res){
     var sql = ' SELECT * FROM `Baseis2019`.`written by`';
     db.query(sql,(err,results)=>{
         if (err) throw err;
-        res.render('show', {table : path.basename(__filename,'.js'), items : results});
+        res.render('show_data', {
+            table : path.basename(__filename,'.js'), 
+            item : results
+        });
     });
 };
 
