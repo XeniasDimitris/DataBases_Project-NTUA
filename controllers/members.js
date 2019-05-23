@@ -2,6 +2,7 @@ const database = require('./../configuration/database');
 const db = database.db;
 const path = require('path');
 
+const bodyParser = require('body-parser');
 
 exports.members_list = function(req,res){
     var sql = ' SELECT  memberID, MLast, MFirst  FROM `Baseis2019`.`member`';
@@ -12,15 +13,14 @@ exports.members_list = function(req,res){
 };
 
 exports.members_create_get = function(req,res){
-    res.send('not implemented: members_create GET');
+    res.sendFile(path.join(__dirname,'../public/', 'member_form.html'));
 };
 
-exports.members_create_post = function(req,res,next){
-    let sql ='INSERT INTO `Baseis2019`.`member` (`memberID`, `MFirst`, `MLast`, `Street`, `number`, `postalCode`, `Mbirthdate`) VALUES (NULL, \'xenias\', \'dimitris\', \'agiou georgiou\', \'63\', \'13121\', \'1997-21-01\')';
+exports.members_create_post = function(req,res){
+    let sql =`INSERT INTO Baseis2019.member (memberID, MFirst, MLast, Street, number, postalCode, Mbirthdate) VALUES (NULL, '${req.body.MFirst}', '${req.body.MLast}', '${req.body.Street}', ${req.body.number}, ${req.body.postalCode}, '${req.Mbirthdate}')` ;
     db.query(sql, (err,results)=>{
-        if(err) throw err;
-        console.log(results);
-        next()
+        if(err) throw err;;
+        res.sendFile(path.join(__dirname,'../public/insertConfirmation.html'));
     })
 };
 
