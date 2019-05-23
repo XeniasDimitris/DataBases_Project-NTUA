@@ -6,7 +6,9 @@
     <title>See <%= table %></title>
 </head>
 <body>
-    <h1> See the <%= table %> database</h1>
+    <h1> See the <%= table %> datas</h1>
+    
+    <!-- <% if item.length > 0 { %> -->
     <table>
         <tr>
             <% for (var i=0; i < Object.getOwnPropertyNames(item[0]).length; i++){ %>
@@ -22,6 +24,10 @@
             </tr>
         <% } %>
     </table>
-    
+    <!--<% } %> -->
+    <!-- <% else { %>
+        <h2> No data in the database</h2>
+    <% } %>
+    -->
 </body>
 </html>
