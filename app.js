@@ -15,6 +15,8 @@ configDatabase.CreateDatabase;
 configDatabase.FillDatabase;
 
 app.set('view engine', 'ejs');
+
+
 app.use(bodyParser.urlencoded({extended:false}));
 app.use(bodyParser.json());
 
@@ -23,4 +25,7 @@ app.use('/insert',insert);
 app.use('/delete',deleteit);
 app.use('/update',update);
 //app.use(logger); // INIT MIDDLEWARE
-app.use(express.static(path.join(__dirname, 'public'))); // public is static folder MIDDLEWARE
+// public is static folder MIDDLEWARE
+app.use(express.static(path.join(__dirname, 'public'))); 
+
+
