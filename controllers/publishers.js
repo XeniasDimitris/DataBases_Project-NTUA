@@ -3,10 +3,11 @@ const db = database.db;
 const path = require('path');
 
 exports.publishers_list = function(req,res){
-    var sql = ' SELECT * FROM `Baseis2019`.`publisher`';
+    var sql = ' SELECT pubName,estYear FROM `Baseis2019`.`publisher`';
     db.query(sql,(err,results)=>{
         if (err) throw err;
-        res.render('show', {table : path.basename(__filename,'.js'), items : results});
+        res.send(results);
+        //res.render('show', {table : path.basename(__filename,'.js'), items : results});
     });
 };
 
