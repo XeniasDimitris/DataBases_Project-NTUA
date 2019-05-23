@@ -18,7 +18,7 @@ var written_by_controller = require('../controllers/wirtten_by');
 
 //Checks
 
-var members_check= [check('Street','must be e-mail').isEmail(), check('MFirst', 'must be e-mail').isEmail()];
+var members_check= [check('Street','must be e-mail').isString(), check('MFirst', 'must be e-mail').isString()];
 // GET ROUTERS
 router.get('/authors',authors_controller.authors_create_get);
 router.get('/belongs_to',belongs_to_controller.belongs_to_create_get);
