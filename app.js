@@ -9,6 +9,7 @@ const show = require('./routes/show');
 const deleteit = require('./routes/delete');
 const update = require('./routes/update');
 const bodyParser = require('body-parser');
+const ExpressValidator = require('express-validator');
 
 configServer.openServer(app);
 configDatabase.CreateDatabase;
@@ -19,13 +20,15 @@ app.set('view engine', 'ejs');
 
 app.use(bodyParser.urlencoded({extended:false}));
 app.use(bodyParser.json());
+app.use(ExpressValidator());
 
+
+
+app.use(express.static(path.join(__dirname, 'public'))); // public is static folder MIDDLEWARE
 app.use('/show',show);
 app.use('/insert',insert);
 app.use('/delete',deleteit);
 app.use('/update',update);
 //app.use(logger); // INIT MIDDLEWARE
-// public is static folder MIDDLEWARE
-app.use(express.static(path.join(__dirname, 'public'))); 
 
 

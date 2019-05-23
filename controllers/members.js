@@ -1,11 +1,10 @@
 const database = require('./../configuration/database');
 const db = database.db;
 const path = require('path');
-
-const bodyParser = require('body-parser');
+const {validationResult} = require('express-validator/check');
 
 exports.members_list = function(req,res){
-    var sql = ' SELECT  memberID, MLast, MFirst  FROM `Baseis2019`.`member`';
+    var sql = ' SELECT  *  FROM `Baseis2019`.`member`';
     db.query(sql,(err,results)=>{
         if (err) throw err;
         res.render('show_data', {
@@ -16,14 +15,18 @@ exports.members_list = function(req,res){
 };
 
 exports.members_create_get = function(req,res){
-    res.sendFile(path.join(__dirname,'../public/', 'member_form.html'));
+    res.sendFile(path.join(__dirname,'../public/forms', 'member_form.html'));
 };
 
 exports.members_create_post = function(req,res){
-    let sql =`INSERT INTO Baseis2019.member (memberID, MFirst, MLast, Street, number, postalCode, Mbirthdate) VALUES (NULL, '${req.body.MFirst}', '${req.body.MLast}', '${req.body.Street}', ${req.body.number}, ${req.body.postalCode}, '${req.Mbirthdate}')` ;
+    const errors = validationResult(req);
+    if (!errors.isEmpty()) {
+        return res.render('unsuccesfull_action', { action : 'inserted' ,type :' member' ,errors : errors, thepath : '/insert/members'});
+    }
+    let sql =`INSERT INTO Baseis2019.member (memberID, MFirst, MLast, Street, number, postalCode, Mbirthdate) VALUES (NULL, '${req.body.MFirst}', '${req.body.MLast}', '${req.body.Street}', ${req.body.number}, ${req.body.postalCode}, '${req.body.Mbirthdate}')` ;
     db.query(sql, (err,results)=>{
-        if(err) throw err;;
-        res.sendFile(path.join(__dirname,'../public/insertConfirmation.html'));
+        if(err) throw err;
+        res.render('succesfull_action', {action : 'inserted' , type: 'member'});
     })
 };
 

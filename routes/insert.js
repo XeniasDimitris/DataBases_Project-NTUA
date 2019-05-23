@@ -1,5 +1,6 @@
 const express = require('express');
 const router = express.Router();
+const {check} = require('express-validator/check');
 
 var authors_controller = require('../controllers/authors');
 var belongs_to_controller = require('../controllers/belongs_to');
@@ -15,6 +16,9 @@ var reminder_controller = require('../controllers/reminder');
 var temporary_employees_controller = require('../controllers/temporary_employess');
 var written_by_controller = require('../controllers/wirtten_by');
 
+//Checks
+
+var members_check= [check('Street','must be e-mail').isEmail(), check('MFirst', 'must be e-mail').isEmail()];
 // GET ROUTERS
 router.get('/authors',authors_controller.authors_create_get);
 router.get('/belongs_to',belongs_to_controller.belongs_to_create_get);
@@ -39,7 +43,7 @@ router.post('/borrows',borrows_controller.borrows_create_post);
 router.post('/categories',categories_controller.categories_create_post);
 router.post('/copies',copies_controller.copies_create_post);
 router.post('/employees',employees_controller.employees_create_post);
-router.post('/members',members_controller.members_create_post);
+router.post('/members',members_check, members_controller.members_create_post); 
 router.post('/permanent_employees',permanent_employees_controller.permanent_employees_create_post);
 router.post('/publishers',publishers_controller.publishers_create_post);
 router.post('/reminder',reminder_controller.reminder_create_post);
