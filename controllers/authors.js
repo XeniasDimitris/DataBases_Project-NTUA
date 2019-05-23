@@ -3,10 +3,13 @@ const db = database.db;
 const path = require('path');
 
 exports.authors_list = function(req,res){
-    var sql = ' SELECT * FROM `Baseis2019`.`author`';
+    var sql = ' SELECT AFirst,ALast FROM Baseis2019.author';
     db.query(sql,(err,results)=>{
         if (err) throw err;
-        res.render('show', {table : path.basename(__filename,'.js'), items : results});
+        res.render('show_data', {
+            table : path.basename(__filename,'.js'), 
+            item : results
+        });
     });
 };
 

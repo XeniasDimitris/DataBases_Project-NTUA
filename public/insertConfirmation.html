@@ -1,15 +1,13 @@
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>See <%= table %></title>
+    <title>Insertion Complete</title>
 </head>
 <body>
-    <h1> See the <%= table %> database</h1>
-    <h3> Get Data</h3>
-    {{# each items }}
-        Title : {{this.memberID}}
-        {{/each}}
+    <h2>You have successfully inserted a member</h2>
+    <h3><button onclick="location.href='/index.html'"> Go Back To Home </button></h3>
 </body>
 </html>
