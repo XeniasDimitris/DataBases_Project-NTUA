@@ -27,7 +27,7 @@ function CreateDatabase(){
     // table member
     sql = 'CREATE TABLE `Baseis2019`.`member` ( `memberID` INT NOT NULL AUTO_INCREMENT , `MFirst` VARCHAR(50) NOT NULL ,'+ 
         '`MLast` VARCHAR(50) NOT NULL , `Street` VARCHAR(50) NOT NULL , `number` INT UNSIGNED NOT NULL , `postalCode` INT UNSIGNED'+
-         ' NOT NULL , `Mbirthdate` DATE NOT NULL , PRIMARY KEY (`memberID`)) ENGINE = InnoDB';
+         ' NOT NULL , `Mbirthdate` DATE  , PRIMARY KEY (`memberID`)) ENGINE = InnoDB';
     db.query(sql,(err,results)=>{
         if (err) throw err1;
     });
@@ -61,7 +61,7 @@ function CreateDatabase(){
     });
 
     // table publisher
-    sql = 'CREATE TABLE `Baseis2019`.`publisher` ( `pubName` VARCHAR(50) NOT NULL , `estYear` INT NOT NULL , `street` VARCHAR(50) NOT '+
+    sql = 'CREATE TABLE `Baseis2019`.`publisher` ( `pubName` VARCHAR(50) NOT NULL , `estYear` YEAR , `street` VARCHAR(50) NOT '+
         'NULL , `number` INT UNSIGNED NOT NULL , `postalCode` INT NOT NULL , PRIMARY KEY (`pubName`)) ENGINE = InnoDB;';
     db.query(sql,(err,results)=>{
         if (err) throw err6;

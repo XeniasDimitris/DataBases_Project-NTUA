@@ -6,10 +6,9 @@
     <title>See <%= table %></title>
 </head>
 <body>
-    <h1> See the <%= table %> datas</h1>
+    <h1> See the <%= table %>' datas</h1>
     
-    <!-- <% if item.length > 0 { %> -->
-    <table>
+    <table border="3">
         <tr>
             <% for (var i=0; i < Object.getOwnPropertyNames(item[0]).length; i++){ %>
                 <th> <%= Object.getOwnPropertyNames(item[0])[i] %> </th>
@@ -24,10 +23,10 @@
             </tr>
         <% } %>
     </table>
-    <!--<% } %> -->
-    <!-- <% else { %>
-        <h2> No data in the database</h2>
-    <% } %>
-    -->
+    <br><br>
+    <h3><button onclick="location.href='/index.html'"> Go Back To Home </button></h3>
+
+
+    
 </body>
 </html>

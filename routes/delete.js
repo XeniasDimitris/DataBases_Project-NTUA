@@ -45,4 +45,5 @@ router.post('/publishers',publishers_controller.publishers_delete_post);
 router.post('/reminder',reminder_controller.reminder_delete_post);
 router.post('/temporary_employees',temporary_employees_controller.temporary_employees_delete_post);
 router.post('/written_by',written_by_controller.written_by_delete_post);
+
 module.exports = router;
