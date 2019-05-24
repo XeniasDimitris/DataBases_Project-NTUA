@@ -1,0 +1,193 @@
+const mysql = require('mysql');
+const fillDatabase = require('./filldatabase');
+
+const db = mysql.createConnection({
+    host     : 'localhost',
+    user     : 'root',
+    password : 'root'  
+});
+
+db.connect((err)=>{
+    if (err) { 
+        throw err;
+    }
+    console.log('MySQL Connecteeeed');
+});
+
+function CreateDatabase(){
+    var sql = 'DROP DATABASE IF EXISTS Baseis2019'
+    db.query(sql,(err,results)=>{
+        if (err) throw err;
+    });
+    sql = 'CREATE DATABASE Baseis2019';
+    db.query(sql,(err,results)=>{
+        if (err) throw err;
+    });
+
+    // table member
+    sql = 'CREATE TABLE `Baseis2019`.`member` ( `memberID` INT NOT NULL  AUTO_INCREMENT , `MFirst` VARCHAR(50) NOT NULL ,'+ 
+        '`MLast` VARCHAR(50) NOT NULL , `Street` VARCHAR(50) NOT NULL , `number` INT NOT NULL, `postalCode` INT  '+
+         ' NOT NULL , `Mbirthdate` VARCHAR(10) NOT NULL , PRIMARY KEY (`memberID`)) ENGINE = InnoDB';
+    db.query(sql,(err,results)=>{
+        if (err) throw err1;
+    });
+
+    // table Book
+    sql = 'CREATE TABLE `Baseis2019`.`Book` ( `ISBN` VARCHAR(50) NOT NULL , `title` VARCHAR(30) NOT NULL , `pubYear` INT NOT NULL ,' +
+        '`numpages` INT NOT NULL , `pubName` VARCHAR(50) NOT NULL , PRIMARY KEY (`ISBN`)) ENGINE = InnoDB;';
+    db.query(sql,(err,results)=>{
+        if (err) throw err2;
+    });
+
+    // table author
+    sql = 'CREATE TABLE `Baseis2019`.`author` ( `authID` INT NOT NULL AUTO_INCREMENT , `AFirst` VARCHAR(50) NOT NULL , ' +
+        '`ALast` VARCHAR(50) NOT NULL , `Abirthdate` VARCHAR(10) NOT NULL , PRIMARY KEY (`authID`)) ENGINE = InnoDB';
+    db.query(sql,(err,results)=>{
+        if (err) throw err3;
+    });
+
+    // table category
+    sql = 'CREATE TABLE `Baseis2019`.`category` ( `categoryName` VARCHAR(50) NOT NULL , `supercategoryName` VARCHAR(50) ' +
+        ', PRIMARY KEY (`categoryName`)) ENGINE = InnoDB';
+    db.query(sql,(err,results)=>{
+        if (err) throw err4;
+    });
+
+    // table copies
+    sql = 'CREATE TABLE `Baseis2019`.`copies` ( `ISBN`  VARCHAR(30) NOT NULL , `copyNr` INT NOT NULL , `shelf` INT NOT NULL , PRIMARY'+
+           ' KEY (`ISBN`, `copyNr`)) ENGINE = InnoDB;';
+    db.query(sql,(err,results)=>{
+        if (err) throw err5;
+    });
+
+    // table publisher
+    sql = 'CREATE TABLE `Baseis2019`.`publisher` ( `pubName` VARCHAR(50) NOT NULL , `estYear` VARCHAR(4) , `street` VARCHAR(50) NOT '+
+        'NULL , `number` INT UNSIGNED NOT NULL , `postalCode` INT NOT NULL , PRIMARY KEY (`pubName`)) ENGINE = InnoDB;';
+    db.query(sql,(err,results)=>{
+        if (err) throw err6;
+    });
+
+    // table employee
+    sql = 'CREATE TABLE `Baseis2019`.`employee` ( `empID` INT NOT NULL AUTO_INCREMENT , `EFirst` VARCHAR(50) NOT NULL , `ELast` '+
+        'VARCHAR(50) NOT NULL , `salary` INT UNSIGNED NOT NULL, `type` VARCHAR(50) NOT NULL, `information` VARCHAR(50) NOT NULL, PRIMARY KEY (`empID`)) ENGINE = InnoDB;';
+    db.query(sql,(err,results)=>{
+        if (err) throw err7;
+    });
+
+    // table permanent_employee
+    sql = 'CREATE TABLE `Baseis2019`.`permanent_employee` ( `empID` INT NOT NULL , `HiringDate` VARCHAR(30) NOT NULL , PRIMARY KEY (`empID`)) '+
+        'ENGINE = InnoDB;';
+    db.query(sql,(err,results)=>{
+        if (err) throw err8;
+    });
+
+    // table temporary_employee
+    sql = 'CREATE TABLE `Baseis2019`.`temporary_employee` ( `empID` INT NOT NULL , `ContactNumb` INT NOT NULL , PRIMARY KEY (`empID`)) '+
+        'ENGINE = InnoDB;';
+    db.query(sql,(err,results)=>{
+        if (err) throw err9;
+    });
+
+    // table borrows
+    sql = 'CREATE TABLE `Baseis2019`.`borrows` ( `memberID` INT NOT NULL , `ISBN` VARCHAR(30) NOT NULL , `copyNr` INT NOT NULL , `date_of_borrowing` '+
+        'VARCHAR(10) NOT NULL , date_must_be_returned VARCHAR(10) ,`date_of_return` VARCHAR(10) DEFAULT NULL, PRIMARY KEY (`memberID`, `ISBN`, `copyNr`, `date_of_borrowing`)) ENGINE = InnoDB;';
+    db.query(sql,(err,results)=>{
+        if (err) throw err10;
+    });
+
+    // table belongs_to
+    sql = 'CREATE TABLE `Baseis2019`.`belongs_to` ( `ISBN` VARCHAR(30) NOT NULL , `categoryName`  VARCHAR(50) NOT NULL , PRIMARY KEY (`ISBN`, `categoryName`)) '+
+        'ENGINE = InnoDB;';
+    db.query(sql,(err,results)=>{
+        if (err) throw err11;
+    });
+
+    // table reminder 
+    sql = 'CREATE TABLE `Baseis2019`.`reminder` ( `empID` INT NOT NULL , `memberID` INT NOT NULL , `ISBN` VARCHAR(30) NOT NULL , `copyNr` INT NOT NULL , '+
+        '`date_of_borrowing` VARCHAR(30) NOT NULL , `date_of_reminder` VARCHAR(30) NOT NULL , PRIMARY KEY (`empID`, `memberID`, `ISBN`, `copyNr`, `date_of_borrowing`, '+
+        '`date_of_reminder`)) ENGINE = InnoDB;';
+    db.query(sql,(err,results)=>{
+        if (err) throw err12;
+    });
+
+    // table written_by
+    sql = 'CREATE TABLE `Baseis2019`.`written_by` ( `ISBN` VARCHAR(30) NOT NULL , `authID` INT NOT NULL , PRIMARY KEY (`ISBN`, `authID`)) ENGINE = InnoDB;';
+    db.query(sql,(err,results)=>{``
+        if (err) throw err13;
+    });
+
+    // put Foreign Keys in tables
+    sql = 'ALTER TABLE `Baseis2019`.`Book` ADD FOREIGN KEY (`pubName`) REFERENCES `publisher`(`pubName`) ON DELETE CASCADE ON UPDATE CASCADE;';
+    db.query(sql,(err,results)=>{
+        if (err) throw err14;
+    });
+    sql = 'ALTER TABLE `Baseis2019`.`category` ADD FOREIGN KEY (`supercategoryName`) REFERENCES `category`(`categoryName`) ON DELETE RESTRICT ON UPDATE CASCADE;';
+    db.query(sql,(err,results)=>{
+        if (err) throw err15;
+    });
+    sql = 'ALTER TABLE `Baseis2019`.`copies` ADD FOREIGN KEY (`ISBN`) REFERENCES `Book`(`ISBN`) ON DELETE CASCADE ON UPDATE CASCADE;';
+    db.query(sql,(err,results)=>{
+        if (err) throw err16;
+    });
+    sql = 'ALTER TABLE `Baseis2019`.`permanent_employee` ADD FOREIGN KEY (`empID`) REFERENCES `employee`(`empID`) ON DELETE CASCADE ON UPDATE CASCADE;';
+    db.query(sql,(err,results)=>{
+        if (err) throw err17;
+    });
+    sql = 'ALTER TABLE `Baseis2019`.`temporary_employee` ADD FOREIGN KEY (`empID`) REFERENCES `employee`(`empID`) ON DELETE CASCADE ON UPDATE CASCADE;';
+    db.query(sql,(err,results)=>{
+        if (err) throw err18;
+    });
+    sql = 'ALTER TABLE `Baseis2019`.`borrows` ADD FOREIGN KEY (`memberID`) REFERENCES `member`(`memberID`) ON DELETE CASCADE ON UPDATE CASCADE;';
+    db.query(sql,(err,results)=>{
+        if (err) throw err19;
+    });
+    sql = 'ALTER TABLE `Baseis2019`.`borrows` ADD FOREIGN KEY (`ISBN`, `copyNr`) REFERENCES `copies`(`ISBN`, `copyNr`) ON DELETE CASCADE ON UPDATE CASCADE;';
+    db.query(sql,(err,results)=>{
+        if (err) throw err21;
+    });
+    sql = 'ALTER TABLE `Baseis2019`.`belongs_to` ADD FOREIGN KEY (`ISBN`) REFERENCES `Book`(`ISBN`) ON DELETE CASCADE ON UPDATE CASCADE;';
+    db.query(sql,(err,results)=>{
+        if (err) throw err22;
+    });
+    sql = 'ALTER TABLE `Baseis2019`.`belongs_to` ADD FOREIGN KEY (`categoryName`) REFERENCES `category`(`categoryName`) ON DELETE CASCADE ON UPDATE CASCADE;';
+    db.query(sql,(err,results)=>{
+        if (err) throw err23;
+    });
+    sql = 'ALTER TABLE `Baseis2019`.`reminder` ADD FOREIGN KEY (`empID`) REFERENCES `employee`(`empID`) ON DELETE CASCADE ON UPDATE CASCADE;';
+    db.query(sql,(err,results)=>{
+        if (err) throw err24;
+    });
+    sql = 'ALTER TABLE `Baseis2019`.`reminder` ADD FOREIGN KEY (`memberID`, `ISBN`, `copyNr`, `date_of_borrowing`) REFERENCES `borrows`(`memberID`, `ISBN`, `copyNr`, `date_of_borrowing`) ON DELETE CASCADE ON UPDATE CASCADE;';
+    db.query(sql,(err,results)=>{
+        if (err) throw err27;
+    });
+    sql = 'ALTER TABLE `Baseis2019`.`written_by` ADD FOREIGN KEY (`ISBN`) REFERENCES `Book`(`ISBN`) ON DELETE CASCADE ON UPDATE CASCADE;';
+    db.query(sql,(err,results)=>{
+        if (err) throw err29;
+    });
+    sql = 'ALTER TABLE `Baseis2019`.`written_by` ADD FOREIGN KEY (`authID`) REFERENCES `author`(`authID`) ON DELETE CASCADE ON UPDATE CASCADE;';
+    db.query(sql,(err,results)=>{
+        if (err) throw err30;
+        console.log('Database created');
+    });
+     
+    //Triggers
+    sql = "CREATE TRIGGER `Baseis2019`.`insertEmployee` AFTER INSERT ON `Baseis2019`.`employee` FOR EACH ROW BEGIN IF NEW.type = 'permanent' THEN INSERT INTO `Baseis2019`.`permanent_employee`(empID,HiringDate) VALUES(NEW.empID, NEW.Information); ELSE INSERT INTO `Baseis2019`.`temporary_employee`(empID,ContactNumb) VALUES(NEW.empID, NEW.Information); END IF; END;";
+    db.query(sql,(err,results)=>{
+        if (err) throw err31;
+        console.log('Triggers created');
+    });
+    sql ="CREATE TRIGGER Baseis2019.insertDate BEFORE INSERT ON Baseis2019.borrows FOR EACH ROW SET NEW.date_must_be_returned = DATE_ADD( NEW.date_of_borrowing, INTERVAL 30 DAY);";
+    db.query(sql,(err,results)=>{
+        if (err) throw err101;
+        console.log('Triggers created');
+    });
+};
+   
+function FillDatabase(){
+    fillDatabase.fillDatabase(db);
+}
+
+module.exports.CreateDatabase = CreateDatabase();
+module.exports.FillDatabase = FillDatabase();
+module.exports.db = db;
