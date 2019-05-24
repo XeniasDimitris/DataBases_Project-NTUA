@@ -69,7 +69,7 @@ function CreateDatabase(){
 
     // table employee
     sql = 'CREATE TABLE `Baseis2019`.`employee` ( `empID` INT NOT NULL AUTO_INCREMENT , `EFirst` VARCHAR(50) NOT NULL , `ELast` '+
-        'VARCHAR(50) NOT NULL , `salary` INT UNSIGNED NOT NULL , PRIMARY KEY (`empID`)) ENGINE = InnoDB;';
+        'VARCHAR(50) NOT NULL , `salary` INT UNSIGNED NOT NULL, `type` VARCHAR(50) NOT NULL, `information` VARCHAR(50) NOT NULL, PRIMARY KEY (`empID`)) ENGINE = InnoDB;';
     db.query(sql,(err,results)=>{
         if (err) throw err7;
     });
@@ -113,7 +113,7 @@ function CreateDatabase(){
     // table written_by
     sql = 'CREATE TABLE `Baseis2019`.`written_by` ( `ISBN` VARCHAR(30) NOT NULL , `authID` INT NOT NULL , PRIMARY KEY (`ISBN`, `authID`)) ENGINE = InnoDB;';
     db.query(sql,(err,results)=>{``
-        if (err) throw err;
+        if (err) throw err13;
     });
 
     // put Foreign Keys in tables
@@ -170,7 +170,13 @@ function CreateDatabase(){
         if (err) throw err30;
     });
     console.log('Database created');
-    
+     
+    //Triggers
+    sql = "CREATE TRIGGER `Baseis2019`.`insertEmployee` AFTER INSERT ON `Baseis2019`.`employee` FOR EACH ROW BEGIN IF NEW.type = 'permanent' THEN INSERT INTO `Baseis2019`.`permanent_employee`(empID,HiringDate) VALUES(NEW.empID, NEW.Information); ELSE INSERT INTO `Baseis2019`.`temporary_employee`(empID,ContactNumb) VALUES(NEW.empID, NEW.Information); END IF; END;";
+    db.query(sql,(err,results)=>{
+        if (err) throw err31;
+    });
+    console.log('Triggers created');
 };
 
 function FillDatabase(){
