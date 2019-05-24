@@ -13,13 +13,24 @@ exports.categories_list = function(req,res){
     });
 };
 
-exports.categories_create_get = function(req,res){
-    res.send('not implemented: categories_create GET');
+
+exports.categories_create_get = function(req,res) {
+    res.sendFile(path.join(__dirname,'../public/forms','categoryForm.html'));
 };
 
+
 exports.categories_create_post = function(req,res){
-    res.send('not implemented: categories_create POST')
+    let sql = `INSERT INTO Baseis2019.category (categoryName, supercategoryName ) " +
+    "   VALUES ('${req.body.categoryName}', '${req.body.supercategoryName}');`;
+    
+    db.query(sql, (err,results)=>{
+        if(err) throw err;;
+        res.render('succesfull_action', {action : 'inserted' , type: 'a category'});
+    })
+    
 };
+
+
 
 exports.categories_update_get = function(req,res){
     res.send('categories_update_get');

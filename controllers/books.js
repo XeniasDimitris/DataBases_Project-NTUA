@@ -13,13 +13,23 @@ exports.books_list = function(req,res){
     });
 };
 
+
 exports.books_create_get = function(req,res){
-    res.send('not implemented: books_create GET');
+    res.sendFile(path.join(__dirname,'../public/forms','bookForm.html'));
 };
 
 exports.books_create_post = function(req,res){
-    res.send('not implemented: books_create POST')
+    let sql = `INSERT INTO Baseis2019.book (ISBN, title, pubYear, numPages, pubName) VALUES ('${req.body.ISBN}', '+
+    ' '${req.body.title}', '${req.body.pubYear}', '${req.body.numPages}', '${req.body.pubName}');`;
+    db.query(sql, (err,results)=>{
+        if(err) throw err;;
+        res.render('succesfull_action', {action : 'inserted' , type: 'a book'});
+    });
+    
 };
+
+
+
 
 exports.books_update_get = function(req,res){
     res.send('books_update_get');

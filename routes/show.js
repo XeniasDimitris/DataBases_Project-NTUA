@@ -1,6 +1,10 @@
+//Tools
 const express = require('express');
 const router = express.Router();
 
+
+
+//Vars
 var authors_controller = require('../controllers/authors');
 var belongs_to_controller = require('../controllers/belongs_to');
 var books_controller = require('../controllers/books');
@@ -15,6 +19,10 @@ var reminder_controller = require('../controllers/reminder');
 var temporary_employees_controller = require('../controllers/temporary_employess');
 var written_by_controller = require('../controllers/wirtten_by');
 
+
+
+
+//Router
 router.get('/authors',authors_controller.authors_list);
 router.get('/belongs_to',belongs_to_controller.belongs_to_list);
 router.get('/books',books_controller.books_list);
