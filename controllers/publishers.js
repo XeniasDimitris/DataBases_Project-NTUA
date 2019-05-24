@@ -21,7 +21,7 @@ exports.publishers_create_post = function(req,res){
     let sql = `INSERT INTO Baseis2019.publisher (pubName, estYear, street, number, postalCode) VALUES ('${req.body.pubName}', '${req.body.estYear}', '${req.body.street}', '${req.body.number}', '${req.body.postalcode}');`
     db.query(sql, (err,results)=>{
         if(err) throw err;;
-        res.render('succesfull_action', {action : 'inserted' , type: 'publisher'});
+        res.render('succesfull_action', {action : 'inserted' , type: 'a publisher'});
     })
     
 };
@@ -33,12 +33,4 @@ exports.publishers_update_get = function(req,res){
 
 exports.publishers_update_post = function(req,res){
     res.send('publishers_update_post');
-}
-
-exports.publishers_delete_get = function(req,res){
-    res.send('publishers_delete_get');
-}
-
-exports.publishers_delete_post = function(req,res){
-    res.send('publishers_delete_post');
 }

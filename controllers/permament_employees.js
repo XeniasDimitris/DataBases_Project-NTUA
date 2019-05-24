@@ -12,27 +12,3 @@ exports.permanent_employees_list = function(req,res){
         });
     });
 };
-
-exports.permanent_employees_create_get = function(req,res){
-    res.send('not implemented: permanent_employees_create GET');
-};
-
-exports.permanent_employees_create_post = function(req,res){
-    res.send('not implemented: permanent_employees_create POST')
-};
-
-exports.permanent_employees_update_get = function(req,res){
-    res.send('permanent_employees_update_get');
-}
-
-exports.permanent_employees_update_post = function(req,res){
-    res.send('permanent_employees_update_post');
-}
-
-exports.permanent_employees_delete_get = function(req,res){
-    res.send('permanent_employees_delete_get');
-}
-
-exports.permanent_employees_delete_post = function(req,res){
-    res.send('permanent_employees_delete_post');
-}

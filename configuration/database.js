@@ -27,7 +27,7 @@ function CreateDatabase(){
     // table member
     sql = 'CREATE TABLE `Baseis2019`.`member` ( `memberID` INT NOT NULL  AUTO_INCREMENT , `MFirst` VARCHAR(50) NOT NULL ,'+ 
         '`MLast` VARCHAR(50) NOT NULL , `Street` VARCHAR(50) NOT NULL , `number` INT NOT NULL, `postalCode` INT  '+
-         ' NOT NULL , `Mbirthdate` DATE NOT NULL , PRIMARY KEY (`memberID`)) ENGINE = InnoDB';
+         ' NOT NULL , `Mbirthdate` VARCHAR(10) NOT NULL , PRIMARY KEY (`memberID`)) ENGINE = InnoDB';
     db.query(sql,(err,results)=>{
         if (err) throw err1;
     });
@@ -41,7 +41,7 @@ function CreateDatabase(){
 
     // table author
     sql = 'CREATE TABLE `Baseis2019`.`author` ( `authID` INT NOT NULL AUTO_INCREMENT , `AFirst` VARCHAR(50) NOT NULL , ' +
-        '`ALast` VARCHAR(50) NOT NULL , `Abirthdate` DATE NOT NULL , PRIMARY KEY (`authID`)) ENGINE = InnoDB';
+        '`ALast` VARCHAR(50) NOT NULL , `Abirthdate` VARCHAR(10) NOT NULL , PRIMARY KEY (`authID`)) ENGINE = InnoDB';
     db.query(sql,(err,results)=>{
         if (err) throw err3;
     });
@@ -61,7 +61,7 @@ function CreateDatabase(){
     });
 
     // table publisher
-    sql = 'CREATE TABLE `Baseis2019`.`publisher` ( `pubName` VARCHAR(50) NOT NULL , `estYear` YEAR , `street` VARCHAR(50) NOT '+
+    sql = 'CREATE TABLE `Baseis2019`.`publisher` ( `pubName` VARCHAR(50) NOT NULL , `estYear` VARCHAR(4) , `street` VARCHAR(50) NOT '+
         'NULL , `number` INT UNSIGNED NOT NULL , `postalCode` INT NOT NULL , PRIMARY KEY (`pubName`)) ENGINE = InnoDB;';
     db.query(sql,(err,results)=>{
         if (err) throw err6;
@@ -69,13 +69,13 @@ function CreateDatabase(){
 
     // table employee
     sql = 'CREATE TABLE `Baseis2019`.`employee` ( `empID` INT NOT NULL AUTO_INCREMENT , `EFirst` VARCHAR(50) NOT NULL , `ELast` '+
-        'VARCHAR(50) NOT NULL , `salary` INT UNSIGNED NOT NULL , PRIMARY KEY (`empID`)) ENGINE = InnoDB;';
+        'VARCHAR(50) NOT NULL , `salary` INT UNSIGNED NOT NULL, `type` VARCHAR(50) NOT NULL, `information` VARCHAR(50) NOT NULL, PRIMARY KEY (`empID`)) ENGINE = InnoDB;';
     db.query(sql,(err,results)=>{
         if (err) throw err7;
     });
 
     // table permanent_employee
-    sql = 'CREATE TABLE `Baseis2019`.`permanent_employee` ( `empID` INT NOT NULL , `HiringDate` DATE NOT NULL , PRIMARY KEY (`empID`)) '+
+    sql = 'CREATE TABLE `Baseis2019`.`permanent_employee` ( `empID` INT NOT NULL , `HiringDate` VARCHAR(30) NOT NULL , PRIMARY KEY (`empID`)) '+
         'ENGINE = InnoDB;';
     db.query(sql,(err,results)=>{
         if (err) throw err8;
@@ -90,7 +90,7 @@ function CreateDatabase(){
 
     // table borrows
     sql = 'CREATE TABLE `Baseis2019`.`borrows` ( `memberID` INT NOT NULL , `ISBN` VARCHAR(30) NOT NULL , `copyNr` INT NOT NULL , `date_of_borrowing` '+
-        'DATE NOT NULL , `date_of_return` DATE NOT NULL , PRIMARY KEY (`memberID`, `ISBN`, `copyNr`, `date_of_borrowing`)) ENGINE = InnoDB;';
+        'VARCHAR(10) NOT NULL , date_must_be_returned VARCHAR(10) ,`date_of_return` VARCHAR(10) DEFAULT NULL, PRIMARY KEY (`memberID`, `ISBN`, `copyNr`, `date_of_borrowing`)) ENGINE = InnoDB;';
     db.query(sql,(err,results)=>{
         if (err) throw err10;
     });
@@ -104,7 +104,7 @@ function CreateDatabase(){
 
     // table reminder 
     sql = 'CREATE TABLE `Baseis2019`.`reminder` ( `empID` INT NOT NULL , `memberID` INT NOT NULL , `ISBN` VARCHAR(30) NOT NULL , `copyNr` INT NOT NULL , '+
-        '`date_of_borrowing` DATE NOT NULL , `date_of_reminder` DATE NOT NULL , PRIMARY KEY (`empID`, `memberID`, `ISBN`, `copyNr`, `date_of_borrowing`, '+
+        '`date_of_borrowing` VARCHAR(30) NOT NULL , `date_of_reminder` VARCHAR(30) NOT NULL , PRIMARY KEY (`empID`, `memberID`, `ISBN`, `copyNr`, `date_of_borrowing`, '+
         '`date_of_reminder`)) ENGINE = InnoDB;';
     db.query(sql,(err,results)=>{
         if (err) throw err12;
@@ -113,7 +113,7 @@ function CreateDatabase(){
     // table written_by
     sql = 'CREATE TABLE `Baseis2019`.`written_by` ( `ISBN` VARCHAR(30) NOT NULL , `authID` INT NOT NULL , PRIMARY KEY (`ISBN`, `authID`)) ENGINE = InnoDB;';
     db.query(sql,(err,results)=>{``
-        if (err) throw err;
+        if (err) throw err13;
     });
 
     // put Foreign Keys in tables
@@ -141,10 +141,6 @@ function CreateDatabase(){
     db.query(sql,(err,results)=>{
         if (err) throw err19;
     });
-    sql = 'ALTER TABLE `Baseis2019`.`borrows` ADD FOREIGN KEY (`ISBN`) REFERENCES `Book`(`ISBN`) ON DELETE CASCADE ON UPDATE CASCADE;';
-    db.query(sql,(err,results)=>{
-        if (err) throw err20;
-    });
     sql = 'ALTER TABLE `Baseis2019`.`borrows` ADD FOREIGN KEY (`ISBN`, `copyNr`) REFERENCES `copies`(`ISBN`, `copyNr`) ON DELETE CASCADE ON UPDATE CASCADE;';
     db.query(sql,(err,results)=>{
         if (err) throw err21;
@@ -161,21 +157,9 @@ function CreateDatabase(){
     db.query(sql,(err,results)=>{
         if (err) throw err24;
     });
-    sql = 'ALTER TABLE `Baseis2019`.`reminder` ADD FOREIGN KEY (`memberID`) REFERENCES `member`(`memberID`) ON DELETE CASCADE ON UPDATE CASCADE;';
-    db.query(sql,(err,results)=>{
-        if (err) throw err25;
-    });
-    sql = 'ALTER TABLE `Baseis2019`.`reminder` ADD FOREIGN KEY (`ISBN`) REFERENCES `Book`(`ISBN`) ON DELETE CASCADE ON UPDATE CASCADE;'
-    db.query(sql,(err,results)=>{
-        if (err) throw err26;
-    });
     sql = 'ALTER TABLE `Baseis2019`.`reminder` ADD FOREIGN KEY (`memberID`, `ISBN`, `copyNr`, `date_of_borrowing`) REFERENCES `borrows`(`memberID`, `ISBN`, `copyNr`, `date_of_borrowing`) ON DELETE CASCADE ON UPDATE CASCADE;';
     db.query(sql,(err,results)=>{
         if (err) throw err27;
-    });
-    sql = 'ALTER TABLE `Baseis2019`.`reminder` ADD FOREIGN KEY (`ISBN`, `copyNr`) REFERENCES `copies`(`ISBN`, `copyNr`) ON DELETE CASCADE ON UPDATE CASCADE;';
-    db.query(sql,(err,results)=>{
-        if (err) throw err28;
     });
     sql = 'ALTER TABLE `Baseis2019`.`written_by` ADD FOREIGN KEY (`ISBN`) REFERENCES `Book`(`ISBN`) ON DELETE CASCADE ON UPDATE CASCADE;';
     db.query(sql,(err,results)=>{
@@ -184,11 +168,22 @@ function CreateDatabase(){
     sql = 'ALTER TABLE `Baseis2019`.`written_by` ADD FOREIGN KEY (`authID`) REFERENCES `author`(`authID`) ON DELETE CASCADE ON UPDATE CASCADE;';
     db.query(sql,(err,results)=>{
         if (err) throw err30;
+        console.log('Database created');
     });
-    console.log('Database created');
-    
+     
+    //Triggers
+    sql = "CREATE TRIGGER `Baseis2019`.`insertEmployee` AFTER INSERT ON `Baseis2019`.`employee` FOR EACH ROW BEGIN IF NEW.type = 'permanent' THEN INSERT INTO `Baseis2019`.`permanent_employee`(empID,HiringDate) VALUES(NEW.empID, NEW.Information); ELSE INSERT INTO `Baseis2019`.`temporary_employee`(empID,ContactNumb) VALUES(NEW.empID, NEW.Information); END IF; END;";
+    db.query(sql,(err,results)=>{
+        if (err) throw err31;
+        console.log('Triggers created');
+    });
+    sql ="CREATE TRIGGER Baseis2019.insertDate BEFORE INSERT ON Baseis2019.borrows FOR EACH ROW SET NEW.date_must_be_returned = DATE_ADD( NEW.date_of_borrowing, INTERVAL 30 DAY);";
+    db.query(sql,(err,results)=>{
+        if (err) throw err101;
+        console.log('Triggers created');
+    });
 };
-
+   
 function FillDatabase(){
     fillDatabase.fillDatabase(db);
 }
