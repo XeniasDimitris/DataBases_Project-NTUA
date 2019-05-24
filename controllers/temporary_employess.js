@@ -12,27 +12,3 @@ exports.temporary_employees_list = function(req,res){
         });
     });
 };
-
-exports.temporary_employees_create_get = function(req,res){
-    res.send('not implemented: temporary_employees_create GET');
-};
-
-exports.temporary_employees_create_post = function(req,res){
-    res.send('not implemented: temporary_employees_create POST')
-};
-
-exports.temporary_employees_update_get = function(req,res){
-    res.send('temporary_employees_update_get');
-}
-
-exports.temporary_employees_update_post = function(req,res){
-    res.send('temporary_employees_update_post');
-}
-
-exports.temporary_employees_delete_get = function(req,res){
-    res.send('temporary_employees_delete_get');
-}
-
-exports.temporary_employees_delete_post = function(req,res){
-    res.send('temporary_employees_delete_post');
-}

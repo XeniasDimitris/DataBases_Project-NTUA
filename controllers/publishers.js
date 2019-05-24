@@ -34,11 +34,3 @@ exports.publishers_update_get = function(req,res){
 exports.publishers_update_post = function(req,res){
     res.send('publishers_update_post');
 }
-
-exports.publishers_delete_get = function(req,res){
-    res.send('publishers_delete_get');
-}
-
-exports.publishers_delete_post = function(req,res){
-    res.send('publishers_delete_post');
-}
