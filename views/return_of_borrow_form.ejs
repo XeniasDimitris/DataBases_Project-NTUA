@@ -6,7 +6,9 @@
     <title>Return of a book</title>
 </head>
 <body>
-    <h2>Please select the book and the copy that returned : </h2>
+    <h2>Please select the book and the copy that have been returned  </h2>
+    <h4>List of the pending borrows</h4> 
+    ISBN -> CopyNumber <br>
     <form action="/update/borrows" method="POST">
         <select name= 'borrow'>
             <% for (var i=0; i< item.length ;i++) { %>
