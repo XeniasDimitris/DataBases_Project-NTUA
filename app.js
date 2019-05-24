@@ -3,7 +3,6 @@ const app = express();
 const path = require('path');
 const configDatabase = require('./configuration/database');
 const configServer = require('./configuration/server');
-const logger = require('./middlewares/logger');
 const insert = require('./routes/insert');
 const show = require('./routes/show');
 const deleteit = require('./routes/delete');
