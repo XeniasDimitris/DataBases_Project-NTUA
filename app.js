@@ -1,4 +1,5 @@
 const express = require('express');
+const app = express();
 const path = require('path');
 const configDatabase = require('./configuration/database');
 const configServer = require('./configuration/server');
@@ -6,7 +7,6 @@ const insert = require('./routes/insert');
 const show = require('./routes/show');
 const deleteit = require('./routes/delete');
 const update = require('./routes/update');
-const app = express();
 const bodyParser = require('body-parser');
 const ExpressValidator = require('express-validator');
 
@@ -16,6 +16,8 @@ configDatabase.FillDatabase;
 
 
 app.set('view engine', 'ejs');
+
+
 app.use(bodyParser.urlencoded({extended:false}));
 app.use(bodyParser.json());
 app.use(ExpressValidator());
