@@ -85,24 +85,25 @@ function fillDatabase(db) {
             if (err) throw err;
         });
     //Employee Imports
-    sql = "INSERT INTO `Baseis2019`.`employee` (`empID`, `EFirst`, `ELast`, `salary`) VALUES" +
-        "(1, 'Lizette ', 'Struthers', 800)," +
-        "(2, 'Dinorah', ' Corbett', 812)," +
-        "(3, 'Lin ', 'Laughlin', 854)," +
-        "(4, 'Donte', 'Guerero', 900)," +
-        "(5, 'Monica', 'Bellucci', 10000)," +
-        "(6, 'Melane', 'Craig', 950)," +
-        "(7, 'Alexis', 'Navas', 850)," +
-        "(8, 'Lisa', 'Rank', 680)," +
-        "(9, 'Bonnie', 'Clark', 750)," +
-        "(10, 'Belva', 'Bartch', 860)," +
-        "(11, 'Jamila', 'Adkinson', 940)," +
-        "(12, 'Hung', 'Chin', 745);"
+    sql = "INSERT INTO `Baseis2019`.`employee` (`empID`, `EFirst`, `ELast`, `salary`, `type`, `Information`) VALUES" +
+        "(1, 'Lizette ', 'Struthers', 800, 'temporary', '531432465')," +
+        "(2, 'Dinorah', ' Corbett', 812, 'permanent', '2019-05-18')," +
+        "(3, 'Lin ', 'Laughlin', 854, 'temporary', '212895367')," +
+        "(4, 'Donte', 'Guerero', 900, 'permanent', '2019-05-25')," +
+        "(5, 'Monica', 'Bellucci', 10000, 'temporary', '960858293')," +
+        "(6, 'Melane', 'Craig', 950, 'temporary', '691045898')," +
+        "(7, 'Alexis', 'Navas', 850, 'permanent', '2019-05-09')," +
+        "(8, 'Lisa', 'Rank', 680, 'temporary', '292998954')," +
+        "(9, 'Bonnie', 'Clark', 750, 'permanent', '2019-05-03')," +
+        "(10, 'Belva', 'Bartch', 860, 'permanent', '2019-05-04')," +
+        "(11, 'Jamila', 'Adkinson', 940, 'permanent', '2018-05-03')," +
+        "(12, 'Hung', 'Chin', 745, 'temporary', '604441479');"
         db.query(sql,(err,results)=>{
             if (err) throw err;
         });
     
     //Permant Employees Imports
+    /*
     sql = "INSERT INTO `Baseis2019`.`permanent_employee` (`empID`, `HiringDate`) VALUES" +
         "(2, '2019-05-18')," +
         "(4, '2019-05-25')," +
@@ -113,7 +114,9 @@ function fillDatabase(db) {
         db.query(sql,(err,results)=>{
             if (err) throw err;
         });
+    /*
     //Temporary Employees Imports
+    /*
     sql = "INSERT INTO `Baseis2019`.`temporary_employee` (`empID`, `ContactNumb`) VALUES" +
         "(1, 531432465)," +
         "(3, 212895367)," +
@@ -124,6 +127,7 @@ function fillDatabase(db) {
         db.query(sql,(err,results)=>{
             if (err) throw err;
         });
+        */
     //Borrows Imports
     sql = "INSERT INTO `Baseis2019`.`borrows` (`memberID`, `ISBN`, `copyNr`, `date_of_borrowing`, `date_of_return`) VALUES" +
         "(1, '978-1-891830-19-8', 9, '2019-03-05', '2019-03-27')," +
