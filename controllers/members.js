@@ -19,10 +19,6 @@ exports.members_create_get = function(req,res){
 };
 
 exports.members_create_post = function(req,res){
-    const errors = validationResult(req);
-    if (!errors.isEmpty()) {
-        return res.render('unsuccessful_action', { action : 'inserted' ,type :'a member' ,errors : errors, thepath : '/insert/members'});
-    }
     let sql =`INSERT INTO Baseis2019.member (memberID, MFirst, MLast, Street, number, postalCode, Mbirthdate) VALUES (NULL, '${req.body.MFirst}', '${req.body.MLast}', '${req.body.Street}', ${req.body.number}, '${req.body.postalCode}', '${req.body.Mbirthdate}')` ;
     db.query(sql, (err,results)=>{
         if(err) throw err;
