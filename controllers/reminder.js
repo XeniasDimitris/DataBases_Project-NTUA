@@ -39,3 +39,19 @@ exports.reminder_create_post = function(req,res){
         res.render('successful_action',{ action : 'remind', type: 'all members'});
     });
 };
+
+exports.reminder_update_get = function(req,res){
+    res.send('reminder_update_get');
+}
+
+exports.reminder_update_post = function(req,res){
+    res.send('reminder_update_post');
+}
+
+exports.reminder_delete_get = function(req,res){
+    res.send('reminder_delete_get');
+}
+
+exports.reminder_delete_post = function(req,res){
+    res.send('reminder_delete_post');
+}

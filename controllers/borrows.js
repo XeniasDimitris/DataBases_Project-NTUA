@@ -37,3 +37,11 @@ exports.borrows_update_post = function(req,res){
         res.render('successful_action',{action: "returned" ,type :"a book"});
     })
 }
+
+exports.borrows_delete_get = function(req,res){
+    res.send('borrows_delete_get');
+}
+
+exports.borrows_delete_post = function(req,res){
+    res.send('borrows_delete_post');
+}
