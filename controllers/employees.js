@@ -5,7 +5,7 @@ const {validationResult} = require('express-validator/check');
 
 
 exports.employees_list = function(req,res){
-    var sql = ' SELECT * FROM `Baseis2019`.`employee`';
+    var sql = ' SELECT empID,EFirst,ELast,type FROM `Baseis2019`.`employee`';
     db.query(sql,(err,results)=>{
         if (err) throw err;
         res.render('show_data', {
