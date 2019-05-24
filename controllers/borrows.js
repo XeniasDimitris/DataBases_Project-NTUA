@@ -22,11 +22,20 @@ exports.borrows_create_post = function(req,res){
 };
 
 exports.borrows_update_get = function(req,res){
-    res.send('borrows_update_get');
+    var sql = " SELECT ISBN , copyNr FROM Baseis2019.borrows WHERE date_of_return IS NULL ";
+    db.query(sql,(err,results)=>{
+        if (err) throw err;
+        res.render('return_of_borrow_form', { item : results});
+    })
 }
 
 exports.borrows_update_post = function(req,res){
-    res.send('borrows_update_post');
+    var splitter = req.body.borrow.split("/");
+    sql = `UPDATE Baseis2019.borrows SET date_of_return = CURDATE() WHERE ISBN = '${splitter[0]}' AND copyNr = '${splitter[1]}';`;
+    db.query(sql,(err,results)=>{
+        if (err) err;
+        res.render('successful_action',{action: "returned" ,type :"a book"});
+    })
 }
 
 exports.borrows_delete_get = function(req,res){

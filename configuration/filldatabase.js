@@ -18,16 +18,16 @@ function fillDatabase(db) {
     
     //Member Imports
     sql = "INSERT INTO `Baseis2019`.`member` (`memberID`, `MFirst`, `MLast`, `Street`, `number`, `postalCode`, `Mbirthdate`) VALUES " +
-    " (1, 'Maddison', 'Houghton', 'Caerfai Bay Road', 85, 22079, '2018-09-03'), " +
-    " (2, 'Declan ', ' Elliott', 'Cabell Avenue', 1608, 6320, '2019-05-09')," +
-    " (3, 'Samantha', 'Miah', 'Jones Street', 4674, 76148, '2018-09-17')," +
-    " (4, 'Summer ', 'Hartley', 'Saints Alley', 139, 33647, '2018-12-09')," +
-    " (6, 'Katie', 'Mills', 'Cedarstone Drive', 436, 44856, '2018-12-29')," +
-    " (7, 'Natasha', 'Norris', 'Linden Avenue', 1647, 32830, '2018-09-21')," +
-    " (8, 'Anna', 'Donely', 'Jett Lane', 163, 15446, '2018-06-24')," +
-    " (9, 'Zachary', 'Dobson', 'Ralhph Drive', 412, 65378, '2018-09-30')," +
-    " (10, 'Henry', 'Jones', 'Wilson Street', 110, 55477, '2018-11-11')," +
-    " (11, 'Laura', 'Dalle', 'Foley Street', 147, 21210, '2018-12-31');"
+    " (1, 'Maddison', 'Houghton', 'Caerfai Bay Road', 85, 22079, DATE('2018-09-03')), " +
+    " (2, 'Declan ', ' Elliott', 'Cabell Avenue', 1608, 6320, DATE('2019-05-09'))," +
+    " (3, 'Samantha', 'Miah', 'Jones Street', 4674, 76148, DATE('2018-09-17'))," +
+    " (4, 'Summer ', 'Hartley', 'Saints Alley', 139, 33647, DATE('2018-12-09'))," +
+    " (6, 'Katie', 'Mills', 'Cedarstone Drive', 436, 44856, DATE('2018-12-29'))," +
+    " (7, 'Natasha', 'Norris', 'Linden Avenue', 1647, 32830, DATE('2018-09-21'))," +
+    " (8, 'Anna', 'Donely', 'Jett Lane', 163, 15446, DATE('2018-06-24'))," +
+    " (9, 'Zachary', 'Dobson', 'Ralhph Drive', 412, 65378, DATE('2018-09-30'))," +
+    " (10, 'Henry', 'Jones', 'Wilson Street', 110, 55477, DATE('2018-11-11'))," +
+    " (11, 'Laura', 'Dalle', 'Foley Street', 147, 21210, DATE('2018-12-31'));"
     db.query(sql,(err,results)=>{
         if (err) throw err;
     });
@@ -129,16 +129,16 @@ function fillDatabase(db) {
         });
         */
     //Borrows Imports
-    sql = "INSERT INTO `Baseis2019`.`borrows` (`memberID`, `ISBN`, `copyNr`, `date_of_borrowing`, `date_of_return`) VALUES" +
-        "(1, '978-1-891830-19-8', 9, DATE('2019-03-05'), '2019-03-27')," +
-        "(1, '978-1-891830-90-7', 7, DATE('2019-05-02'), '2019-05-11')," +
-        "(2, '978-1-891830-75-4', 4, DATE('2019-05-05'), '2019-05-14')," +
-        "(3, '978-1-891830-90-7', 7, DATE('2019-02-01'), '2019-04-02')," +
-        "(4, '978-1-891830-71-6', 8, DATE('2019-04-06'), '2019-05-01')," +
-        "(7, '978-1-60309-047-6', 6, DATE('2019-04-15'), '2019-04-30')," +
-        "(10, '978-1-60309-375-0', 11, DATE('2019-05-04'), '2019-05-18');"
+    sql = "INSERT INTO `Baseis2019`.`borrows` (`memberID`, `ISBN`, `copyNr`, `date_of_borrowing`) VALUES" +
+        "(1, '978-1-891830-19-8', 9, '2019-03-05')," +
+        "(1, '978-1-891830-90-7', 7, '2019-05-02')," +
+        "(2, '978-1-891830-75-4', 4, '2019-05-05')," +
+        "(3, '978-1-891830-90-7', 7, '2019-02-01')," +
+        "(4, '978-1-891830-71-6', 8, '2019-04-06')," +
+        "(7, '978-1-60309-047-6', 6, '2019-04-15')," +
+        "(10, '978-1-60309-375-0', 11,'2019-05-04');"
         db.query(sql,(err,results)=>{
-            if (err) throw err;
+            if (err) throw err100;
         });
     //Category Imports
     sql = "INSERT INTO `Baseis2019`.`category` (`categoryName`, `supercategoryName`) VALUES" +
@@ -199,7 +199,7 @@ function fillDatabase(db) {
         "(2, 7, '978-1-60309-047-6', 6, '2019-04-15', '2019-05-08')," +
         "(3, 1, '978-1-891830-19-8', 9, '2019-03-05', '2019-05-09')," +
         "(6, 3, '978-1-891830-90-7', 7, '2019-02-01', '2019-02-22')," +
-        "(9, 4, '978-1-891830-71-6', 8, '2019-04-06', '2019-06-04')," +
+        "(9, 4, '978-1-891830-71-6', 8, '2019-04-06', '2019-03-04')," +
         "(11, 2,'978-1-891830-75-4', 4, '2019-05-05', '2019-04-06');"
         db.query(sql,(err,results)=>{
             if (err) throw err;

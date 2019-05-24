@@ -20,14 +20,10 @@ exports.employees_create_get = function(req,res){
 };
 
 exports.employees_create_post = function(req,res){
-    const errors = validationResult(req);
-    if (!errors.isEmpty()) {
-        return res.render('unsuccesfull_action', { action : 'inserted' ,type :' employee' ,errors : errors, thepath : '/insert/employees'});
-    }
     let sql =`INSERT INTO Baseis2019.employee (empID, EFirst, ELast, Salary, type, Information) VALUES (NULL, '${req.body.EFirst}', '${req.body.ELast}', ${req.body.Salary}, '${req.body.type}', '${req.body.Information}')` ;
     db.query(sql, (err,results)=>{
         if(err) throw err;
-        res.render('succesfull_action', {action : 'inserted' , type: 'employee'});
+        res.render('successful_action', {action : 'inserted' , type: 'employee'});
     })
 };
 
