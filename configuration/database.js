@@ -25,16 +25,16 @@ function CreateDatabase(){
     });
 
     // table member
-    sql = 'CREATE TABLE `Baseis2019`.`member` ( `memberID` INT NOT NULL AUTO_INCREMENT , `MFirst` VARCHAR(50) NOT NULL ,'+ 
-        '`MLast` VARCHAR(50) NOT NULL , `Street` VARCHAR(50) NOT NULL , `number` INT UNSIGNED NOT NULL , `postalCode` INT UNSIGNED'+
-         ' NOT NULL , `Mbirthdate` DATE  , PRIMARY KEY (`memberID`)) ENGINE = InnoDB';
+    sql = 'CREATE TABLE `Baseis2019`.`member` ( `memberID` INT NOT NULL  AUTO_INCREMENT , `MFirst` VARCHAR(50) NOT NULL ,'+ 
+        '`MLast` VARCHAR(50) NOT NULL , `Street` VARCHAR(50) NOT NULL , `number` INT NOT NULL, `postalCode` INT  '+
+         ' NOT NULL , `Mbirthdate` DATE NOT NULL , PRIMARY KEY (`memberID`)) ENGINE = InnoDB';
     db.query(sql,(err,results)=>{
         if (err) throw err1;
     });
 
     // table Book
-    sql = 'CREATE TABLE `Baseis2019`.`Book` ( `ISBN` VARCHAR(50) NOT NULL , `title` VARCHAR(30) NOT NULL , `pubYear` INT UNSIGNED NOT NULL ,' +
-        '`numpages` INT UNSIGNED NOT NULL , `pubName` VARCHAR(50) NOT NULL , PRIMARY KEY (`ISBN`)) ENGINE = InnoDB;';
+    sql = 'CREATE TABLE `Baseis2019`.`Book` ( `ISBN` VARCHAR(50) NOT NULL , `title` VARCHAR(30) NOT NULL , `pubYear` INT NOT NULL ,' +
+        '`numpages` INT NOT NULL , `pubName` VARCHAR(50) NOT NULL , PRIMARY KEY (`ISBN`)) ENGINE = InnoDB;';
     db.query(sql,(err,results)=>{
         if (err) throw err2;
     });
@@ -117,71 +117,71 @@ function CreateDatabase(){
     });
 
     // put Foreign Keys in tables
-    sql = 'ALTER TABLE `Baseis2019`.`Book` ADD FOREIGN KEY (`pubName`) REFERENCES `publisher`(`pubName`) ON DELETE RESTRICT ON UPDATE RESTRICT;';
+    sql = 'ALTER TABLE `Baseis2019`.`Book` ADD FOREIGN KEY (`pubName`) REFERENCES `publisher`(`pubName`) ON DELETE CASCADE ON UPDATE CASCADE;';
     db.query(sql,(err,results)=>{
         if (err) throw err14;
     });
-    sql = 'ALTER TABLE `Baseis2019`.`category` ADD FOREIGN KEY (`supercategoryName`) REFERENCES `category`(`categoryName`) ON DELETE RESTRICT ON UPDATE RESTRICT;';
+    sql = 'ALTER TABLE `Baseis2019`.`category` ADD FOREIGN KEY (`supercategoryName`) REFERENCES `category`(`categoryName`) ON DELETE RESTRICT ON UPDATE CASCADE;';
     db.query(sql,(err,results)=>{
         if (err) throw err15;
     });
-    sql = 'ALTER TABLE `Baseis2019`.`copies` ADD FOREIGN KEY (`ISBN`) REFERENCES `Book`(`ISBN`) ON DELETE RESTRICT ON UPDATE RESTRICT;';
+    sql = 'ALTER TABLE `Baseis2019`.`copies` ADD FOREIGN KEY (`ISBN`) REFERENCES `Book`(`ISBN`) ON DELETE CASCADE ON UPDATE CASCADE;';
     db.query(sql,(err,results)=>{
         if (err) throw err16;
     });
-    sql = 'ALTER TABLE `Baseis2019`.`permanent_employee` ADD FOREIGN KEY (`empID`) REFERENCES `employee`(`empID`) ON DELETE RESTRICT ON UPDATE RESTRICT;';
+    sql = 'ALTER TABLE `Baseis2019`.`permanent_employee` ADD FOREIGN KEY (`empID`) REFERENCES `employee`(`empID`) ON DELETE CASCADE ON UPDATE CASCADE;';
     db.query(sql,(err,results)=>{
         if (err) throw err17;
     });
-    sql = 'ALTER TABLE `Baseis2019`.`temporary_employee` ADD FOREIGN KEY (`empID`) REFERENCES `employee`(`empID`) ON DELETE RESTRICT ON UPDATE RESTRICT;';
+    sql = 'ALTER TABLE `Baseis2019`.`temporary_employee` ADD FOREIGN KEY (`empID`) REFERENCES `employee`(`empID`) ON DELETE CASCADE ON UPDATE CASCADE;';
     db.query(sql,(err,results)=>{
         if (err) throw err18;
     });
-    sql = 'ALTER TABLE `Baseis2019`.`borrows` ADD FOREIGN KEY (`memberID`) REFERENCES `member`(`memberID`) ON DELETE RESTRICT ON UPDATE RESTRICT;';
+    sql = 'ALTER TABLE `Baseis2019`.`borrows` ADD FOREIGN KEY (`memberID`) REFERENCES `member`(`memberID`) ON DELETE CASCADE ON UPDATE CASCADE;';
     db.query(sql,(err,results)=>{
         if (err) throw err19;
     });
-    sql = 'ALTER TABLE `Baseis2019`.`borrows` ADD FOREIGN KEY (`ISBN`) REFERENCES `Book`(`ISBN`) ON DELETE RESTRICT ON UPDATE RESTRICT;';
+    sql = 'ALTER TABLE `Baseis2019`.`borrows` ADD FOREIGN KEY (`ISBN`) REFERENCES `Book`(`ISBN`) ON DELETE CASCADE ON UPDATE CASCADE;';
     db.query(sql,(err,results)=>{
         if (err) throw err20;
     });
-    sql = 'ALTER TABLE `Baseis2019`.`borrows` ADD FOREIGN KEY (`ISBN`, `copyNr`) REFERENCES `copies`(`ISBN`, `copyNr`) ON DELETE RESTRICT ON UPDATE RESTRICT;';
+    sql = 'ALTER TABLE `Baseis2019`.`borrows` ADD FOREIGN KEY (`ISBN`, `copyNr`) REFERENCES `copies`(`ISBN`, `copyNr`) ON DELETE CASCADE ON UPDATE CASCADE;';
     db.query(sql,(err,results)=>{
         if (err) throw err21;
     });
-    sql = 'ALTER TABLE `Baseis2019`.`belongs_to` ADD FOREIGN KEY (`ISBN`) REFERENCES `Book`(`ISBN`) ON DELETE RESTRICT ON UPDATE RESTRICT;';
+    sql = 'ALTER TABLE `Baseis2019`.`belongs_to` ADD FOREIGN KEY (`ISBN`) REFERENCES `Book`(`ISBN`) ON DELETE CASCADE ON UPDATE CASCADE;';
     db.query(sql,(err,results)=>{
         if (err) throw err22;
     });
-    sql = 'ALTER TABLE `Baseis2019`.`belongs_to` ADD FOREIGN KEY (`categoryName`) REFERENCES `category`(`categoryName`) ON DELETE RESTRICT ON UPDATE RESTRICT;';
+    sql = 'ALTER TABLE `Baseis2019`.`belongs_to` ADD FOREIGN KEY (`categoryName`) REFERENCES `category`(`categoryName`) ON DELETE CASCADE ON UPDATE CASCADE;';
     db.query(sql,(err,results)=>{
         if (err) throw err23;
     });
-    sql = 'ALTER TABLE `Baseis2019`.`reminder` ADD FOREIGN KEY (`empID`) REFERENCES `employee`(`empID`) ON DELETE RESTRICT ON UPDATE RESTRICT;';
+    sql = 'ALTER TABLE `Baseis2019`.`reminder` ADD FOREIGN KEY (`empID`) REFERENCES `employee`(`empID`) ON DELETE CASCADE ON UPDATE CASCADE;';
     db.query(sql,(err,results)=>{
         if (err) throw err24;
     });
-    sql = 'ALTER TABLE `Baseis2019`.`reminder` ADD FOREIGN KEY (`memberID`) REFERENCES `member`(`memberID`) ON DELETE RESTRICT ON UPDATE RESTRICT;';
+    sql = 'ALTER TABLE `Baseis2019`.`reminder` ADD FOREIGN KEY (`memberID`) REFERENCES `member`(`memberID`) ON DELETE CASCADE ON UPDATE CASCADE;';
     db.query(sql,(err,results)=>{
         if (err) throw err25;
     });
-    sql = 'ALTER TABLE `Baseis2019`.`reminder` ADD FOREIGN KEY (`ISBN`) REFERENCES `Book`(`ISBN`) ON DELETE RESTRICT ON UPDATE RESTRICT;'
+    sql = 'ALTER TABLE `Baseis2019`.`reminder` ADD FOREIGN KEY (`ISBN`) REFERENCES `Book`(`ISBN`) ON DELETE CASCADE ON UPDATE CASCADE;'
     db.query(sql,(err,results)=>{
         if (err) throw err26;
     });
-    sql = 'ALTER TABLE `Baseis2019`.`reminder` ADD FOREIGN KEY (`memberID`, `ISBN`, `copyNr`, `date_of_borrowing`) REFERENCES `borrows`(`memberID`, `ISBN`, `copyNr`, `date_of_borrowing`) ON DELETE RESTRICT ON UPDATE RESTRICT;';
+    sql = 'ALTER TABLE `Baseis2019`.`reminder` ADD FOREIGN KEY (`memberID`, `ISBN`, `copyNr`, `date_of_borrowing`) REFERENCES `borrows`(`memberID`, `ISBN`, `copyNr`, `date_of_borrowing`) ON DELETE CASCADE ON UPDATE CASCADE;';
     db.query(sql,(err,results)=>{
         if (err) throw err27;
     });
-    sql = 'ALTER TABLE `Baseis2019`.`reminder` ADD FOREIGN KEY (`ISBN`, `copyNr`) REFERENCES `copies`(`ISBN`, `copyNr`) ON DELETE RESTRICT ON UPDATE RESTRICT;';
+    sql = 'ALTER TABLE `Baseis2019`.`reminder` ADD FOREIGN KEY (`ISBN`, `copyNr`) REFERENCES `copies`(`ISBN`, `copyNr`) ON DELETE CASCADE ON UPDATE CASCADE;';
     db.query(sql,(err,results)=>{
         if (err) throw err28;
     });
-    sql = 'ALTER TABLE `Baseis2019`.`written_by` ADD FOREIGN KEY (`ISBN`) REFERENCES `Book`(`ISBN`) ON DELETE RESTRICT ON UPDATE RESTRICT;';
+    sql = 'ALTER TABLE `Baseis2019`.`written_by` ADD FOREIGN KEY (`ISBN`) REFERENCES `Book`(`ISBN`) ON DELETE CASCADE ON UPDATE CASCADE;';
     db.query(sql,(err,results)=>{
         if (err) throw err29;
     });
-    sql = 'ALTER TABLE `Baseis2019`.`written_by` ADD FOREIGN KEY (`authID`) REFERENCES `author`(`authID`) ON DELETE RESTRICT ON UPDATE RESTRICT;';
+    sql = 'ALTER TABLE `Baseis2019`.`written_by` ADD FOREIGN KEY (`authID`) REFERENCES `author`(`authID`) ON DELETE CASCADE ON UPDATE CASCADE;';
     db.query(sql,(err,results)=>{
         if (err) throw err30;
     });
