@@ -7,8 +7,9 @@
 ## enjoy
 
 echo ${1}
-var = ${1}
+var="${1}"
+echo $var
 
 git add *
-git commit -m '${var}'
+git commit -m  "$var"
 git push origin master
