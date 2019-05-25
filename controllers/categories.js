@@ -26,7 +26,7 @@ exports.categories_create_post = function(req,res){ //den paizei
     
     db.query(sql, (err,results)=>{
         if(err) throw err;;
-        res.render('succesful_action', {action : 'inserted' , type: 'a category'});
+        res.render('successful_action', {action : 'inserted' , type: 'a category'});
     })
     
 };

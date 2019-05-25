@@ -22,7 +22,7 @@ exports.publishers_create_post = function(req,res){ //dn paizei
      ` '${req.body.street}', '${req.body.number}', '${req.body.postalcode}');`; 
     db.query(sql, (err,results)=>{
         if(err) throw err;;
-        res.render('succesfull_action', {action : 'inserted' , type: 'a publisher'});
+        res.render('successful_action', {action : 'inserted' , type: 'a publisher'});
     })
     
 };
