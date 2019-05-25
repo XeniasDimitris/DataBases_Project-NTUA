@@ -35,9 +35,9 @@ exports.members_update_post = function(req,res){
 }
 
 exports.members_delete_get = function(req,res){
-    res.send('members_delete_get');
+    res.sendFile(path.join(__dirname,'../public/forms/deleteForm', 'memberForm.html'));
 }
 
 exports.members_delete_post = function(req,res){
-    res.send('members_delete_post');
-}
+    res.send('members_delet+e_post');
+};

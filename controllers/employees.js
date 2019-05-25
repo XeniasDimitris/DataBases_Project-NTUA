@@ -16,7 +16,7 @@ exports.employees_list = function(req,res){
 };
 
 exports.employees_create_get = function(req,res){
-    res.sendFile(path.join(__dirname,'../public/forms', 'employee_form.html'));
+    res.sendFile(path.join(__dirname,'../public/forms/insertForm', 'employeeForm.html'));
 };
 
 exports.employees_create_post = function(req,res){
@@ -36,7 +36,8 @@ exports.employees_update_post = function(req,res){
 }
 
 exports.employees_delete_get = function(req,res){
-    res.send('employees_delete_get');
+    res.sendFile(path.join(__dirname,'../public/forms/deleteForm', 'employeeForm.html'));       //enw paizei to book 
+                                                                                            //afto dn paizei... 
 }
 
 exports.employees_delete_post = function(req,res){

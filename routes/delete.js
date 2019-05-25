@@ -18,7 +18,6 @@ router.get('/employees',employees_controller.employees_delete_get);
 router.get('/members',members_controller.members_delete_get);
 router.get('/reminder',reminder_controller.reminder_delete_get);
 
-
 // POST ROUTERS
 router.post('/authors',authors_controller.authors_delete_post);
 router.post('/books',books_controller.books_delete_post);

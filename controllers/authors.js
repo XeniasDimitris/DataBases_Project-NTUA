@@ -15,11 +15,11 @@ exports.authors_list = function(req,res){
 
 
 exports.authors_create_get = function(req,res) {
-    res.sendFile(path.join(__dirname,'../public/forms','authorForm.html'));
+    res.sendFile(path.join(__dirname,'../public/forms/insertForm','authorForm.html'));
 };
 
 
-exports.authors_create_post = function(req,res){
+exports.authors_create_post = function(req,res){ //mallon dn tha paizei
     let sql = `INSERT INTO Baseis2019.author (authID,AFirst,ALast,Abirthdate ) " +
     "   VALUES ('${req.body.authID}', '${req.body.AFirst}', '${req.body.ALast}', '${req.body.Abirthdate}');`;
     

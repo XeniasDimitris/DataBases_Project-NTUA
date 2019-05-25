@@ -15,10 +15,10 @@ exports.books_list = function(req,res){
 
 
 exports.books_create_get = function(req,res){
-    res.sendFile(path.join(__dirname,'../public/forms','bookForm.html'));
+    res.sendFile(path.join(__dirname,'../public/forms/insertForm','bookForm.html'));
 };
 
-exports.books_create_post = function(req,res){
+exports.books_create_post = function(req,res){ //mallon dn paizei
     let sql = `INSERT INTO Baseis2019.book (ISBN, title, pubYear, numPages, pubName) VALUES ('${req.body.ISBN}', '+
     ' '${req.body.title}', '${req.body.pubYear}', '${req.body.numPages}', '${req.body.pubName}');`;
     db.query(sql, (err,results)=>{
@@ -40,9 +40,14 @@ exports.books_update_post = function(req,res){
 }
 
 exports.books_delete_get = function(req,res){
-    res.send('books_delete_get');
+    res.sendFile(path.join(__dirname,'../public/forms/deleteForm','bookDForm.html'));
 }
 
-exports.books_delete_post = function(req,res){
-    res.send('books_delete_post');
+exports.books_delete_post = function(req,res){ //to diagrafei alla petaei error...
+    console.log('Ela mitsoo');
+    let sql = `DELETE FROM Baseis2019.Book  WHERE ISBN = '${req.body.ISBN}' `;    
+    db.query(sql, (err,results)=>{
+        if(err) throw err;
+       res.render('succesful_action', {action : 'deleted' , type: 'a book'}); 
+    });
 }
