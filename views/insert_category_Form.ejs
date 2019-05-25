@@ -9,9 +9,14 @@
     <h3> Insert a category </h3>
     <form action="/insert/categories" method="POST"> 
     Category Name: <br>
-    <input type="text" name="categoryName"> <br> 
-    Supercategory Name: <br>
-    <input type="text" name="supercategoryName"> <br>
+    <input type="text" name="categoryName"> <br> <br>
+    Supercategory Name: <br> 
+    <select name="supercategoryName">
+        <option value="none">none</option>
+        <% for (var i=0; i< item.length ; i++){%>
+        <option value="<%= item[i].categoryName%>"><%= item[i].categoryName%></option>
+        <%}%>
+    <select>
     <input type="submit" name="See Data"> 
     
     </form>

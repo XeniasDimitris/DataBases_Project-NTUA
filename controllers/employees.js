@@ -36,10 +36,17 @@ exports.employees_update_post = function(req,res){
 }
 
 exports.employees_delete_get = function(req,res){
-    res.sendFile(path.join(__dirname,'../public/forms/deleteForm', 'employeeForm.html'));       //enw paizei to book 
-                                                                                            //afto dn paizei... 
+    sql = "SELECT empID FROM Baseis2019.employee";
+    db.query(sql, (err,results)=>{
+        if(err) throw err;
+        res.render('delete_employee_form', {item : results});
+    });
 }
 
 exports.employees_delete_post = function(req,res){
-    res.send('employees_delete_post');
+    let sql = `DELETE FROM Baseis2019.employee  WHERE empID = '${req.body.empID}' `;    
+    db.query(sql, (err,results)=>{
+        if(err) throw err;
+       res.render('successful_action', {action : 'deleted' , type: 'an employee'}); 
+    });
 }

@@ -9,11 +9,14 @@
 </head>
 <body>
     <h1> Delete a member </h1>
+    Please select the members's ID you want to delete :<br><br>
     <form action="/delete/members" method="POST"> 
-    Please register the members's ID you want to delete :<br>
-    <input type="text" name="memberID"> <br> 
-    <input type="submit" name="Submit"> 
-    
+        <select name="memberID">
+                <% for (var i=0; i< item.length; i++){%>
+                    <option value="<%= item[i].memberID %>"><%= item[i].memberID %></option>
+                <%}%>
+        <input type="submit" name="Submit"> 
+        </select>
     </form>
 </body>
 </html>

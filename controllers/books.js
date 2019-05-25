@@ -35,14 +35,18 @@ exports.books_update_post = function(req,res){
 }
 
 exports.books_delete_get = function(req,res){
-    res.sendFile(path.join(__dirname,'../public/forms/deleteForm','bookDForm.html'));
+    sql = "SELECT ISBN FROM Baseis2019.Book";
+    db.query(sql, (err,results)=>{
+        if(err) throw err;
+        res.render('delete_book_form', {item : results});
+    });
+    
 }
 
-exports.books_delete_post = function(req,res){ //to diagrafei alla petaei error...
-    console.log('Ela mitsoo');
+exports.books_delete_post = function(req,res){ 
     let sql = `DELETE FROM Baseis2019.Book  WHERE ISBN = '${req.body.ISBN}' `;    
     db.query(sql, (err,results)=>{
         if(err) throw err;
-       res.render('succesful_action', {action : 'deleted' , type: 'a book'}); 
+       res.render('successful_action', {action : 'deleted' , type: 'a book'}); 
     });
 }

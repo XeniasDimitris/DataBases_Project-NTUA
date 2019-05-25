@@ -9,10 +9,14 @@
 </head>
 <body>
     <h1> Delete a book </h1>
+    Please select the ISBN of the book you want to delete : <br><br>
     <form action="/delete/books" method="POST"> 
-    Please register the ISBN of the bookyou want to delete : <br>
-    <input type="text" name="ISBN"> <br> 
-    <input type="submit" name="Submit"> 
+        <select name="ISBN">
+        <% for (var i=0; i< item.length; i++){%>
+            <option value="<%= item[i].ISBN %>"><%= item[i].ISBN %></option>
+        <%}%>
+        </select>
+        <input type="submit" name="Submit"> 
     
     </form>
 </body>

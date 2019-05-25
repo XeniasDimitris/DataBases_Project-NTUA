@@ -35,9 +35,16 @@ exports.members_update_post = function(req,res){
 }
 
 exports.members_delete_get = function(req,res){
-    res.sendFile(path.join(__dirname,'../public/forms/deleteForm', 'memberForm.html'));
+    sql = "SELECT memberID FROM Baseis2019.member";
+    db.query(sql, (err,results)=>{
+        res.render('delete_member_form', {item:results});
+    });
 }
 
 exports.members_delete_post = function(req,res){
-    res.send('members_delet+e_post');
+    let sql = `DELETE FROM Baseis2019.member  WHERE memberID = '${req.body.memberID}' `;    
+    db.query(sql, (err,results)=>{
+        if(err) throw err;
+       res.render('successful_action', {action : 'deleted' , type: 'a member'}); 
+    });
 };
