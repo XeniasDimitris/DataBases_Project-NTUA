@@ -6,6 +6,8 @@
 ## arg1 einai to minima p tha periexei to commit
 ## enjoy
 
+var = $1
+
 git add *
-git commit -m '$1'
+git commit -m '$var'
 git push origin master
