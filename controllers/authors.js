@@ -19,13 +19,13 @@ exports.authors_create_get = function(req,res) {
 };
 
 
-exports.authors_create_post = function(req,res){ 
-    let sql = `INSERT INTO Baseis2019.author (authID,AFirst,ALast,Abirthdate ) ` +
-       `VALUES ('${req.body.authID}', '${req.body.AFirst}', '${req.body.ALast}', '${req.body.Abirthdate}');`;
+exports.authors_create_post = function(req,res){ //mallon dn tha paizei 
+    let sql = `INSERT INTO Baseis2019.author (authID,AFirst,ALast,Abirthdate ) " +
+    "   VALUES ('${req.body.authID}', '${req.body.AFirst}', '${req.body.ALast}', '${req.body.Abirthdate}');`;
     
     db.query(sql, (err,results)=>{
         if(err) throw err;;
-        res.render('successful_action', {action : 'inserted' , type: 'an author'});
+        res.render('succesfull_action', {action : 'inserted' , type: 'an author'});
     })
     
 };
