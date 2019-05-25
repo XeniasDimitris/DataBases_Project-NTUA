@@ -7,7 +7,9 @@
 ## opou arg1 to minima p tha periexete mesa sto commit
 ## enjoy
 
+var="${1}"
+
 git add *
-git commit -m '$1'
+git commit -m "$var$"
 git pull origin master
 
