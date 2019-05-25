@@ -6,9 +6,7 @@
 ## arg1 einai to minima p tha periexei to commit
 ## enjoy
 
-echo ${1}
 var="${1}"
-echo $var
 
 git add *
 git commit -m  "$var"
