@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Update an employee</title>
+</head>
+<body>
+    <h1> Update an employee </h1>
+    Please select the employee's ID and what you want to update :<br>
+    <form action="/update/employees" method="POST"> 
+        <select name="empID">
+            <% for (var i=0; i< item.length; i++){%>
+                 <option value="<%= item[i].empID %>"><%= item[i].empID %></option>
+            <%}%>
+        </select>
+        
+        <br><br>
+        Employee's First Name:
+        <select name="EFirst">
+            <% for (var i=0; i< item.length; i++){%>
+                 <option value="<%= item[i].EFirst %>"><%= item[i].EFirst %></option>
+            <%}%>
+        </select>
+
+        <br><br>
+        Employee's Last Name:
+        <form action="/insert/categories" method="POST"> 
+            Category Name: <br>
+            <input type="text" name="categoryName"> <br> <br>
+            
+        <select name="ELast">
+            <% for (var i=0; i< item.length; i++){%>
+                 <option value="<%= item[i].ELast %>"><%= item[i].ELast %></option>
+            <%}%>
+        </select>
+
+        <br><br>
+        Employee's Salary:
+        <select name="salary">
+            <% for (var i=0; i< item.length; i++){%>
+                 <option value="<%= item[i].salary %>"><%= item[i].salary %></option>
+            <%}%>
+        </select>
+        
+        <br><br>
+        Employee's Type:
+        <select name="type">
+            <% for (var i=0; i< item.length; i++){%>
+                 <option value="<%= item[i].type %>"><%= item[i].type %></option>
+            <%}%>
+        </select>
+
+
+
+
+
+
+        <input type="submit" name="Submit"> 
+    
+    </form>
+</body>
+</html>

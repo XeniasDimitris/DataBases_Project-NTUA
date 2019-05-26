@@ -28,18 +28,26 @@ exports.employees_create_post = function(req,res){
 };
 
 exports.employees_update_get = function(req,res){
-    res.send('employees_update_get');
+    sql = "SELECT empID FROM Baseis2019.employee";
+    db.query(sql, (err,results)=>{
+        if(err) throw err;
+        res.render('updateEmployee', {item : results});
+    });   
 }
 
 exports.employees_update_post = function(req,res){
-    res.send('employees_update_post');
+    sql = "SELECT * FROM Baseis2019.employee";
+    db.query(sql, (err,results)=>{
+        if(err) throw err;
+        res.render('updateEmployee', {item : results});
+    });
 }
 
 exports.employees_delete_get = function(req,res){
     sql = "SELECT empID FROM Baseis2019.employee";
     db.query(sql, (err,results)=>{
         if(err) throw err;
-        res.render('delete_employee_form', {item : results});
+        res.render('updateEmployee', {item : results});
     });
 }
 
