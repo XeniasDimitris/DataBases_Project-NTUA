@@ -1,5 +1,9 @@
 const mysql = require('mysql');
 const fillDatabase = require('./filldatabase');
+const createDatabase = require('./createDatabase');
+const createForeignKeys = require('./createForeignkeys');
+const createTriggers = require('./createTriggers');
+
 
 const db = mysql.createConnection({
     host     : 'localhost',
@@ -15,6 +19,8 @@ db.connect((err)=>{
 });
 
 function CreateDatabase(){
+
+
     var sql = 'DROP DATABASE IF EXISTS Baseis2019'
     db.query(sql,(err,results)=>{
         if (err) throw err;
@@ -23,6 +29,7 @@ function CreateDatabase(){
     db.query(sql,(err,results)=>{
         if (err) throw err;
     });
+<<<<<<< HEAD
 
     // table member
     sql = 'CREATE TABLE `Baseis2019`.`member` ( `memberID` INT NOT NULL AUTO_INCREMENT , `MFirst` VARCHAR(50) NOT NULL ,'+ 
@@ -186,12 +193,21 @@ function CreateDatabase(){
         if (err) throw err30;
     });
     console.log('Database created');
+=======
+    module.exports.fillDatabase = fillDatabase;
+    
+    createDatabase.createDatabase(db);
+    createForeignKeys.createForeignkeys(db);
+    createTriggers.createTriggers(db);
+     
+>>>>>>> 55a9fa4ac537a95de5045efd50338a2720e180ac
     
 };
-
+   
 function FillDatabase(){
     fillDatabase.fillDatabase(db);
 }
 
 module.exports.CreateDatabase = CreateDatabase();
 module.exports.FillDatabase = FillDatabase();
+module.exports.db = db;

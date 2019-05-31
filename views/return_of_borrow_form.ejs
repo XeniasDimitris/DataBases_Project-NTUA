@@ -1,0 +1,21 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Return of a book</title>
+</head>
+<body>
+    <h2>Please select the book and the copy that have been returned  </h2>
+    <h4>List of the pending borrows</h4> 
+    ISBN -> CopyNumber <br>
+    <form action="/update/borrows" method="POST">
+        <select name= 'borrow'>
+            <% for (var i=0; i< item.length ;i++) { %>
+                <option value= '<%= item[i].ISBN%>/<%=item[i].copyNr%>'> <%= item[i].ISBN %>  ->  <%=item[i].copyNr%> </option>
+            <% } %>
+        </select> <br> <br>
+        <input type="submit" name="Submit">   
+    </form> 
+</body>
+</html>

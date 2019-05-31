@@ -1,0 +1,75 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Insert a Book</title>
+</head>
+<body>
+    <h1> Insert a Book </h1>
+    <form action="/insert/books" method="POST"> 
+    ISBN: <br>
+    <input type="text" name="ISBN"> <br> 
+    Title: <br>
+    <input type="text" name="title"> <br>
+    Year of publication: <br>
+    <input type="text" name="pubYear"> <br>
+    Number of pages: <br>
+    <input type="text" name="numpages"> <br>
+    Author: <br>
+    <select name="oldAuthor">
+            <% for (var i=0; i< row1.length ; i++){%>
+            <option value="<%= row1[i].AFirst + ' ' + row1[i].ALast%>"><%= row1[i].AFirst + ' ' + row1[i].ALast%></option>
+            <%}%>
+    </select>
+    Is he not in the list ?<input type="checkbox" name="authorExists" value="no"><br>
+    Please add the author<br>
+    First Name: <br>
+    <input type="text" name="newAFirst"> <br>
+    Last Name: <br>
+    <input type="text" name="newALast"> <br>
+    Date of birth: <br>
+    <input type="text" name="Abirthdate"> <br>
+    Category:<br>
+
+    <select name="oldcategoryName">
+        <% for (var i=0; i< row2.length ; i++){%>
+        <option value="<%= row2[i].categoryName%>"><%= row2[i].categoryName%></option>
+        <%}%>
+    </select>
+    Does the book belong to another Category?<input type="checkbox" name="categoryExists" value="no"><br>
+    Please add the category<br>
+    Category name: <br>
+    <input type="text" name="newcategoryName"> <br>
+    Is this category a sub-category? <br>
+    <select name="supercategoryName">
+        <option value="none">none</option>
+        <% for (var i=0; i< row2.length ; i++){%>
+        <option value="<%= row2[i].categoryName%>"><%= row2[i].categoryName%></option>
+        <%}%>
+    </select><br>
+    Publisher:<br>
+    <select name="oldPublisher">
+            <option value="none">none</option>
+            <% for (var i=0; i< row3.length ; i++){%>
+            <option value="<%= row3[i].pubName%>"><%= row3[i].pubName%></option>
+            <%}%>
+    </select>
+    Does the publisher not exist in the list?<input type="checkbox" name="publisherExists" value="no"><br>
+    Please add the publisher<br>
+    Publisher name: <br>
+    <input type="text" name="newpubName"> <br>
+    Year of establishment: <br>
+    <input type="text" name="estYear"> <br>
+    Street:<br>
+    <input type="text" name="street"> <br>
+    Number:<br>
+    <input type="text" name="number"> <br>
+    Postal code:<br>
+    <input type="text" name="postalCode"> <br>
+    <input type="submit" name="Submit"> 
+    
+    </form>
+</body>
+</html>
