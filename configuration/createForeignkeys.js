@@ -1,4 +1,4 @@
-function createForeignkeys (db) {
+function createforeignKeys (db) {
     // put Foreign Keys in tables
     sql = 'ALTER TABLE `Baseis2019`.`Book` ADD FOREIGN KEY (`pubName`) REFERENCES `publisher`(`pubName`) ON DELETE CASCADE ON UPDATE CASCADE;';
     db.query(sql,(err,results)=>{
@@ -55,4 +55,4 @@ function createForeignkeys (db) {
     });
 }
 
-module.exports.createForeignkeys = createForeignkeys;
+module.exports.createforeignKeys = createforeignKeys;
