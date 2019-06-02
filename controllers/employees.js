@@ -28,11 +28,7 @@ exports.employees_create_post = function(req,res){
 };
 
 exports.employees_update_get = function(req,res){
-    sql = "SELECT empID FROM Baseis2019.employee";
-    db.query(sql, (err,results)=>{
-        if(err) throw err;
-        res.render('updateEmployee', {item : results});
-    });   
+    res.sendFile(path.join(__dirname,'../views', 'updateEmployee.ejs'));   
 }
 
 exports.employees_update_post = function(req,res){
