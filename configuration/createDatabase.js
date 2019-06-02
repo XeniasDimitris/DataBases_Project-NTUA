@@ -1,4 +1,18 @@
 function createDatabase(db) {
+    
+    
+    //initializes
+    sql = 'DROP DATABASE IF EXISTS Baseis2019'
+    db.query(sql,(err,results)=>{
+        if (err) throw err;
+    });
+    sql = 'CREATE DATABASE Baseis2019';
+    db.query(sql,(err,results)=>{
+        if (err) throw err;
+    });
+    
+    
+    
     // table member
     sql = 'CREATE TABLE `Baseis2019`.`member` ( `memberID` INT NOT NULL  AUTO_INCREMENT , `MFirst` VARCHAR(50) NOT NULL ,'+ 
         '`MLast` VARCHAR(50) NOT NULL , `Street` VARCHAR(50) NOT NULL , `number` INT NOT NULL, `postalCode` INT  '+
