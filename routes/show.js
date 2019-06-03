@@ -19,6 +19,7 @@ var reminder_controller = require('../controllers/reminder');
 var temporary_employees_controller = require('../controllers/temporary_employess');
 var written_by_controller = require('../controllers/wirtten_by');
 var bookauthorController = require('../controllers/bookAuthor');
+var books_per_day = require('../controllers/booksperday');
 
 
 
@@ -37,5 +38,6 @@ router.get('/reminder',reminder_controller.reminder_list);
 router.get('/temporary_employees',temporary_employees_controller.temporary_employees_list);
 router.get('/written_by',written_by_controller.written_by_list);
 router.get('/bookAuthor',bookauthorController.bookauthorList);
+router.get('/books_per_day',books_per_day.borrowedbooksperday);
 
 module.exports = router;
