@@ -9,12 +9,12 @@ function createViews(db) {
         console.log('View created');
     });
 
-    sql = "CREATE VIEW Baseis2019.Authors_Statistics AS SELECT " +
+    /*sql = "CREATE VIEW Baseis2019.Authors_Statistics AS SELECT " +
     " a.AFirst , a.ALast FROM Baseis2019.author a INNER JOIN Baseis2019.written_by w ON a.authID = w.authID GROUP BY a.authorID;"; 
     db.query(sql,(err,results)=>{
         if (err) throw err35;
         console.log('View created');
-    });
+    });*/
     //a.AFirst , a.ALast COUNT(w.ISBN)
 //STATISTICS
 
