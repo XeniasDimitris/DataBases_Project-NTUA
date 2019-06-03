@@ -28,7 +28,7 @@ exports.employees_create_post = function(req,res){
 };
 
 exports.employees_update_get = function(req,res){
-    res.sendFile(path.join(__dirname,'../views', 'updateEmployee.ejs'));   
+  //  res.sendFile(path.join(__dirname,'../views', 'updateEmployee.ejs'));   
 }
 
 exports.employees_update_post = function(req,res){

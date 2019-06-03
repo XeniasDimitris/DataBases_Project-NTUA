@@ -31,3 +31,4 @@ app.use('/update',update);
 //app.use(logger); // INIT MIDDLEWARE
 
 
+var dateFormat =  require('dateformat');
