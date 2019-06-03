@@ -2,7 +2,7 @@ function createViews(db) {
     //Views
 
 
-    sql = "CREATE VIEW `authview`  AS " +
+   /* sql = "CREATE VIEW `authview`  AS " +
     " SELECT `author`.`AFirst`, `author`.`ALast` "+
     " FROM `author` ;";
     db.query(sql,(err,results)=>{
@@ -54,7 +54,7 @@ function createViews(db) {
 
 
 
-
+*/
 
 }
 
