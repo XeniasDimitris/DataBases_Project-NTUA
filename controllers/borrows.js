@@ -31,7 +31,6 @@ exports.borrows_create_post = function(req,res){
     var copy = book[1];
     var member = (req.body.member).split(" ");
     var memberID =member[0];
-    var d = new Date;
     var MFirst = member[1];
     var MLast = member[2];
     var sql1 = `SELECT totalcopies, expired FROM (SELECT COUNT(*) AS totalcopies FROM Baseis2019.borrows WHERE memberID = ${memberID} AND date_of_return IS NULL) copycount, (SELECT COUNT(*) AS expired FROM Baseis2019.borrows WHERE memberID = ${memberID} AND date_of_return IS NULL AND date_must_be_returned < CURDATE() ) expiredcount`;
