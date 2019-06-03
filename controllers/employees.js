@@ -8,7 +8,7 @@ var css = {
 };
 
 exports.employees_list = function(req,res){
-    var sql = ' SELECT empID,EFirst,ELast,type FROM `Baseis2019`.`employee`';
+    var sql = ' SELECT * FROM `Baseis2019`.`InfoEmployee`';
     db.query(sql,(err,results)=>{
         if (err) throw err;
         res.render('show_data', {

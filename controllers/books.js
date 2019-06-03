@@ -71,7 +71,7 @@ exports.books_create_post = function(req,res){
         });  
     };
 
-    var sql = `INSERT INTO Baseis2019.book(ISBN, title, pubYear, numpages, pubName) VALUES ('${req.body.ISBN}', '${req.body.title}', '${req.body.pubYear}', '${req.body.numpages}', '${publisher}');`;
+    var sql = `INSERT INTO Baseis2019.Book(ISBN, title, pubYear, numpages, pubName) VALUES ('${req.body.ISBN}', '${req.body.title}', '${req.body.pubYear}', '${req.body.numpages}', '${publisher}');`;
     db.query(sql,(err,results)=>{
         if (err) throw err;
         var sql1 = `INSERT INTO Baseis2019.belongs_to(ISBN, categoryName) VALUES ('${req.body.ISBN}', '${category}');`;
