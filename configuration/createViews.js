@@ -10,7 +10,7 @@ function createViews(db) {
     });
 
     sql = "CREATE VIEW Baseis2019.Authors_Statistics AS SELECT " +
-    " a.AFirst , a.ALast, COUNT(w.ISBN) FROM Baseis2019.author a INNER JOIN Baseis2019.written_by w ON a.authID = w.authID GROUP BY a.authID;"; 
+    " a.AFirst as First_Name, a.ALast AS Last_Name, COUNT(w.ISBN) AS Number_of_Books FROM Baseis2019.author a INNER JOIN Baseis2019.written_by w ON a.authID = w.authID GROUP BY a.authID;"; 
     db.query(sql,(err,results)=>{
         if (err) throw err35;
         console.log('View created');

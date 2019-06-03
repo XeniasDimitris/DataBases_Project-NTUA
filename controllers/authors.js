@@ -7,7 +7,7 @@ var css = {
 };
 
 exports.authors_list = function(req,res){
-    var sql = ' SELECT * FROM Baseis2019.author';
+    var sql = ' SELECT * FROM Baseis2019.Authors_Statistics';
     db.query(sql,(err,results)=>{
         if (err) throw err;
         res.render('show_data', {
