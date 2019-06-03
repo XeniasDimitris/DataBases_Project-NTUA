@@ -1,6 +1,10 @@
 const database = require('./../configuration/database');
 const db = database.db;
 const path = require('path');
+var fs = require('fs');
+var css = {
+     style : fs.readFileSync('public/style.css','utf8')
+};
 
 exports.books_list = function(req,res){
     var sql = ' SELECT b.ISBN,b.title, c.copyNr, c.shelf, b.numpages, b.pubYear, a.AFirst, a.ALast, b.pubName FROM Baseis2019.Book b INNER JOIN Baseis2019.copies c ON c.ISBN=b.ISBN INNER JOIN Baseis2019.written_by w ON w.ISBN = b.ISBN INNER JOIN Baseis2019.author a ON a.authID = w.authID  ORDER BY b.title  ';
@@ -8,7 +12,7 @@ exports.books_list = function(req,res){
         if (err) throw err;
         res.render('show_data', {
             table : path.basename(__filename,'.js'), 
-            item : results
+            item : results, css : css
         });
     });
 };
@@ -24,7 +28,7 @@ exports.books_create_get = function(req,res){
             if (err) throw err;
             db.query(sql3,(err,results3)=>{
                 if (err) throw err;
-                res.render('insert_book_form', { row1 : results1, row2 : results2, row3 : results3});
+                res.render('insert_book_form', { row1 : results1, row2 : results2, row3 : results3, css : css});
             });
         });
     });
@@ -82,7 +86,7 @@ exports.books_create_post = function(req,res){
                 if (err) throw err;
             });
         });
-        res.render('successful_action', {action : 'inserted' , type: 'a book'});   
+        res.render('successful_action', {action : 'inserted' , type: 'a book', css : css});   
     });
 
 
@@ -103,7 +107,7 @@ exports.books_delete_get = function(req,res){
     sql = "SELECT ISBN FROM Baseis2019.Book";
     db.query(sql, (err,results)=>{
         if(err) throw err;
-        res.render('delete_book_form', {item : results});
+        res.render('delete_book_form', {item : results, css : css});
     });
     
 }
@@ -112,6 +116,6 @@ exports.books_delete_post = function(req,res){
     let sql = `DELETE FROM Baseis2019.Book  WHERE ISBN = '${req.body.ISBN}' `;    
     db.query(sql, (err,results)=>{
         if(err) throw err;
-       res.render('successful_action', {action : 'deleted' , type: 'a book'}); 
+       res.render('successful_action', {action : 'deleted' , type: 'a book', css : css}); 
     });
 }

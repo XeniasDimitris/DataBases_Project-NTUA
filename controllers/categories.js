@@ -2,6 +2,10 @@ const database = require('./../configuration/database');
 const db = database.db;
 const path = require('path');
 var mysql = require('mysql');
+var fs = require('fs');
+var css = {
+     style : fs.readFileSync('public/style.css','utf8')
+};
 
 exports.categories_list = function(req,res){
     var sql = ' SELECT * FROM `Baseis2019`.`category`';
@@ -9,7 +13,7 @@ exports.categories_list = function(req,res){
         if (err) throw err;
         res.render('show_data', {
             table : path.basename(__filename,'.js'), 
-            item : results
+            item : results, css : css
         });
     });
 };
@@ -19,7 +23,7 @@ exports.categories_create_get = function(req,res) {
     sql = " SELECT categoryName FROM Baseis2019.category;"
     db.query(sql, (err,results)=>{
         if(err) throw err;
-        res.render('insert_category_Form',{item : results});
+        res.render('insert_category_Form',{item : results, css : css});
     });
 };
 
@@ -35,10 +39,10 @@ exports.categories_create_post = function(req,res){ //den paizei
             let sql = `UPDATE Baseis2019.category SET supercategoryName = '${req.body.supercategoryName}' WHERE categoryName = '${req.body.categoryName}';`;
              db.query(sql, (err,results2)=>{
                 if(err) throw err;
-                res.render('successful_action', {action : 'inserted' , type: 'a category'});
+                res.render('successful_action', {action : 'inserted' , type: 'a category', css : css});
             });
         }else{
-            res.render('successful_action', {action : 'inserted' , type: 'a category'});
+            res.render('successful_action', {action : 'inserted' , type: 'a category', css : css});
         }
     })
     

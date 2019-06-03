@@ -1,21 +1,22 @@
 <html lang="en">
 <head>
+    <style> <%- css.style %> </style> 
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Return of a book</title>
 </head>
 <body>
-    <h2>Please select the book and the copy that have been returned  </h2>
-    <h4>List of the pending borrows</h4> 
-    ISBN -> CopyNumber <br>
+    <h1>Please select the book and the copy that have been returned  </h1>
+    <h2>List of the pending borrows</h2> 
+    <p>ISBN -> CopyNumber</p>
     <form action="/update/borrows" method="POST">
         <select name= 'borrow'>
             <% for (var i=0; i< item.length ;i++) { %>
                 <option value= '<%= item[i].ISBN%>/<%=item[i].copyNr%>'> <%= item[i].ISBN %>  ->  <%=item[i].copyNr%> </option>
             <% } %>
         </select> <br> <br>
-        <input type="submit" name="Submit">   
+        <input type="submit" name="Submit" class = "submit">   
     </form> 
 </body>
 </html>

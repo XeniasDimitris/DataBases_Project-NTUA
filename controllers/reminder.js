@@ -1,14 +1,17 @@
 const database = require('./../configuration/database');
 const db = database.db;
 const path = require('path');
-
+var fs = require('fs');
+var css = {
+     style : fs.readFileSync('public/style.css','utf8')
+};
 exports.reminder_list = function(req,res){
     var sql = ' SELECT m.MFirst, m.MLast, m.number, r.ISBN, r.copyNr, r.date_of_borrowing,r.date_of_reminder, e.EFirst, e.ELast FROM `Baseis2019`.`reminder` r INNER JOIN `Baseis2019`.member m ON m.memberID = r.memberID INNER JOIN `Baseis2019`.employee e ON e.empID = r.empId ORDER BY date_of_reminder DESC';
     db.query(sql,(err,results)=>{
         if (err) throw err;
         res.render('show_data', {
             table : path.basename(__filename,'.js'), 
-            item : results
+            item : results, css : css
         });
     });
 };
@@ -17,7 +20,7 @@ exports.reminder_create_get = function(req,res){
     sql = 'SELECT empID FROM Baseis2019.employee';
     db.query(sql, (err,results)=>{
         if (err) throw err;
-        res.render('reminder_form', {item : results});
+        res.render('reminder_form', {item : results, css : css});
     })
     
 
@@ -36,7 +39,7 @@ exports.reminder_create_post = function(req,res){
                 if (err) throw err2;
             })
         }
-        res.render('successful_action',{ action : 'remind', type: 'all members'});
+        res.render('successful_action',{ action : 'remind', type: 'all members', css : css});
     });
 };
 

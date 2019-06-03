@@ -1,12 +1,13 @@
 <html lang="en">
 <head>
+    <style> <%- css.style %> </style> 
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Insert a category</title>
 </head>
 <body>
-    <h3> Insert a category </h3>
+    <h1> Insert a category </h1>
     <form action="/insert/categories" method="POST"> 
     Category Name: <br>
     <input type="text" name="categoryName"> <br> <br>
@@ -16,8 +17,8 @@
         <% for (var i=0; i< item.length ; i++){%>
         <option value="<%= item[i].categoryName%>"><%= item[i].categoryName%></option>
         <%}%>
-    <select>
-    <input type="submit" name="See Data"> 
+    <select> <br>
+    <input type="submit" name="See Data" class = "submit"> 
     
     </form>
 </body>

@@ -1,0 +1,49 @@
+body {
+    font-family: arial, helvetica, serif;	
+    font-size: 15pt;
+    background-color: #d1edff;
+    color: #022c47;
+}
+h1 {
+    text-align: center; 
+    border-width: 5px; 
+    text-decoration: underline;
+
+}
+h2 {
+    text-align: center;
+    text-decoration: none;
+}
+a {
+    color: blue;
+    text-decoration: underline;
+}
+p{
+    text-align: center;
+
+}
+
+form {
+    text-align: center
+}
+input {
+    background-color: #d4e3fc;
+    margin: 5px;
+}
+.submit {
+    background-color: #a2d2f2; 
+}
+select {
+    background-color: #d4e3fc;
+    margin: 5px;
+    font-size: 13pt;
+}
+button {
+    background-color: #a2d2f2;
+    border: none;
+    padding: 8px 15px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+  }

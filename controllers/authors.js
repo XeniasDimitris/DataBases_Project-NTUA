@@ -1,6 +1,10 @@
 const database = require('./../configuration/database');
 const db = database.db;
 const path = require('path');
+var fs = require('fs');
+var css = {
+     style : fs.readFileSync('public/style.css','utf8')
+};
 
 exports.authors_list = function(req,res){
     var sql = ' SELECT * FROM Baseis2019.author';
@@ -8,7 +12,7 @@ exports.authors_list = function(req,res){
         if (err) throw err;
         res.render('show_data', {
             table : path.basename(__filename,'.js'), 
-            item : results
+            item : results, css : css
         });
     });
 };
@@ -25,7 +29,7 @@ exports.authors_create_post = function(req,res){ //mallon dn tha paizei
     
     db.query(sql, (err,results)=>{
         if(err) throw err;;
-        res.render('succesfull_action', {action : 'inserted' , type: 'an author'});
+        res.render('succesfull_action', {action : 'inserted' , type: 'an author', css : css});
     })
     
 };

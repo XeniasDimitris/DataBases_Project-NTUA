@@ -1,6 +1,7 @@
 <html lang="en">
 
 <head>
+    <style> <%- css.style %> </style> 
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
@@ -22,8 +23,8 @@
             <% for (var i=0; i< row2.length ; i++){%>
             <option value="<%= row2[i].memberID + ' ' + row2[i].MFirst + ' ' + row2[i].MLast%>"><%= row2[i].memberID + ' ' + row2[i].MFirst + ' ' + row2[i].MLast%></option>
             <%}%>
-    </select>
-    <input type="submit" name="Submit"> 
+    </select><br>
+    <input type="submit" name="Submit" class = "submit"> 
     
     </form>
 </body>

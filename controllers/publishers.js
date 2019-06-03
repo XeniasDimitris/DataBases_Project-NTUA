@@ -1,6 +1,10 @@
 const database = require('./../configuration/database');
 const db = database.db;
 const path = require('path');
+var fs = require('fs');
+var css = {
+     style : fs.readFileSync('public/style.css','utf8')
+};
 
 exports.publishers_list = function(req,res){
     var sql = ' SELECT * FROM `Baseis2019`.`publisher`';
@@ -8,7 +12,7 @@ exports.publishers_list = function(req,res){
         if (err) throw err;
         res.render('show_data', {
             table : path.basename(__filename,'.js'), 
-            item : results
+            item : results, css : css
         });
     });
 };
@@ -22,7 +26,7 @@ exports.publishers_create_post = function(req,res){ //dn paizei
      ` '${req.body.street}', '${req.body.number}', '${req.body.postalcode}');`; 
     db.query(sql, (err,results)=>{
         if(err) throw err;;
-        res.render('successful_action', {action : 'inserted' , type: 'a publisher'});
+        res.render('successful_action', {action : 'inserted' , type: 'a publisher', css : css});
     })
     
 };

@@ -2,6 +2,7 @@
 <html lang="en">
 
 <head>
+    <link rel="stylesheet" type="text/css" href="../../style.css">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
@@ -10,20 +11,20 @@
 <body>
     <h1> Insert an employee </h1>
     <form action="/insert/employees" method="POST"> 
-    First Name: <br>
+    First Name: 
     <input type="text" name="EFirst"> <br> 
-    Last Name: <br>
+    Last Name: 
     <input type="text" name="ELast"> <br>
-    Salary: <br>
+    Salary: 
     <input type="text" name="Salary"> <br>
     Type:
     <select name = "type">
         <option value="permanent">Permanent</option>
         <option value="temporary">Temporary</option>
     </select> <br>
-    Hiring Date or Contact Number: <br>
+    Hiring Date or Contact Number: 
     <input type="text" name="Information"> <br>
-    <input type="submit" name="Submit"> 
+    <input type="submit" name="Submit" class = "submit"> 
     
     </form>
 </body>
