@@ -41,15 +41,6 @@ function createViews(db) {
 // WHERE (
 // copies.ISBN = book.ISBN )
 
-
-
-
-
-
-
-
-
-
 }
 
 
