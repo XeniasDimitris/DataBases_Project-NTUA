@@ -2,26 +2,20 @@ function createViews(db) {
     //Views
 
 
-    sql = "CREATE VIEW `authview`  AS " +
-    " SELECT `author`.`AFirst`, `author`.`ALast` "+
-    " FROM `author` ;";
+    sql = "CREATE VIEW Baseis2019.`InfoEmployee`  AS " +
+    " SELECT empID,EFirst,ELast,type FROM Baseis2019.employee ";
     db.query(sql,(err,results)=>{
         if (err) throw err35;
         console.log('View created');
     });
 
-    sql = "CREATE VIEW book_view AS SELECT " +
-    "book.title," +
-    "reminder.date_of_borrowing " +
-    "FROM " +
-    "book, " +
-    "reminder ;"
+    sql = "CREATE VIEW Baseis2019.Authors_Statistics AS SELECT " +
+    " a.AFirst , a.ALast FROM Baseis2019.author a INNER JOIN Baseis2019.written_by w ON a.authID = w.authID GROUP BY a.authorID;"; 
     db.query(sql,(err,results)=>{
         if (err) throw err35;
         console.log('View created');
     });
-
-
+    //a.AFirst , a.ALast COUNT(w.ISBN)
 //STATISTICS
 
 // CREATE VIEW cntbooks AS
