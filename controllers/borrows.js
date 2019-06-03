@@ -34,12 +34,8 @@ exports.borrows_create_post = function(req,res){
     var d = new Date;
     var MFirst = member[1];
     var MLast = member[2];
-    var day = d.getDate();
-    var month = d.getMonth() + 1;
-    var year = d.getFullYear();
-    var date = year + "-" + day + "-" + month;
-    var sql1 = `SELECT totalcopies, expired FROM (SELECT COUNT(*) AS totalcopies FROM Baseis2019.borrows WHERE memberID = ${memberID} AND date_of_return IS NULL) copycount, (SELECT COUNT(*) AS expired FROM Baseis2019.borrows WHERE memberID = ${memberID} AND date_of_return IS NULL AND date_must_be_returned < ${date} ) expiredcount`;
-    var sql2 = `INSERT INTO Baseis2019.borrows(memberID, ISBN, copyNr, date_of_borrowing) VALUES(${memberID}, '${ISBN}', '${copy}', '${date}')`;
+    var sql1 = `SELECT totalcopies, expired FROM (SELECT COUNT(*) AS totalcopies FROM Baseis2019.borrows WHERE memberID = ${memberID} AND date_of_return IS NULL) copycount, (SELECT COUNT(*) AS expired FROM Baseis2019.borrows WHERE memberID = ${memberID} AND date_of_return IS NULL AND date_must_be_returned < CURDATE() ) expiredcount`;
+    var sql2 = `INSERT INTO Baseis2019.borrows(memberID, ISBN, copyNr, date_of_borrowing) VALUES(${memberID}, '${ISBN}', '${copy}', CURDATE();`;
     db.query(sql1,(err,results1)=>{
         if (err) throw err;
         if (results1[0].totalcopies < 5 && results1[0].expired <= 0) {
