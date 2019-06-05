@@ -46,7 +46,7 @@ exports.employees_delete_get = function(req,res){
     sql = "SELECT empID FROM Baseis2019.employee";
     db.query(sql, (err,results)=>{
         if(err) throw err;
-        res.render('updateEmployee', {item : results, css : css});
+        res.render('delete_employee_form', {item : results, css : css});
     });
 }
 
