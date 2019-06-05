@@ -1,8 +1,8 @@
 body {
     font-family: arial, helvetica, serif;	
     font-size: 15pt;
-    background-color: #d1edff;
-    color: #022c47;
+    background-color: #12ac45;
+    color: #ffffff;
 }
 h1 {
     text-align: center; 
@@ -27,19 +27,19 @@ form {
     text-align: center
 }
 input {
-    background-color: #d4e3fc;
+    background-color: #ffffff;
     margin: 5px;
 }
 .submit {
-    background-color: #a2d2f2; 
+    background-color: #ffffff; 
 }
 select {
-    background-color: #d4e3fc;
+    background-color: #ffffff;
     margin: 5px;
     font-size: 13pt;
 }
 button {
-    background-color: #a2d2f2;
+    background-color: #ffffff;
     border: none;
     padding: 8px 15px;
     text-align: center;
