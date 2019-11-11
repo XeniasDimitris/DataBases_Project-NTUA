@@ -6,4 +6,5 @@
   
   ## Getting Started
   In order to run the application, you must type (at cwd on bash) : `$ npm install` so as to sychronize the modules of the json.package.
-  Then you open Xampp (or the local MySQL service of your computer) and type: `nodemon` or  `node app.js`
+  Then you should open Xampp (or the local MySQL service of your computer). and type: `nodemon` or  `node app.js`
+  **IMPORTANT**
