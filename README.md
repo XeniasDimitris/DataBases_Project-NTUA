@@ -9,7 +9,8 @@
   Then you should open Xampp and start the servers (or start the local MySQL service in your computer) and then type: `$ nodemon` or  `$ node app.js`. \
   >**IMPORTANT!!** \
   You must check that in MySQL service (either on Xampp or locally) your credentials are **user=root** and **password=root**.     Otherwise edit the *./configuration/database.js* and put your credentials for the right connection.\
-  \
+  
+  
   Now everything is ready! Type in your browser <http://localhost:3000> and the app is up!
   
   ## 
