@@ -19,4 +19,6 @@
   
  ## E-R Diagram
  
+ ## Relational Model-Schema
+ ![Logo](https://raw.githubusercontent.com/XeniasDimitris/DataBases/master/Relation-Model.png?token=AKROCQEJYYMKKANUC6KHJ6C52M3SS)
     
