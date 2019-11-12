@@ -18,7 +18,7 @@
   This project intends to built the database and handle complicated quiries so as to give the requested of the excercise. So less attention has been given to the front-end.
   
  ## E-R Diagram
- 
+ ![](https://raw.githubusercontent.com/XeniasDimitris/DataBases/master/Physical_Relational_Model.png?token=AKROCQG5NEFNZS6V7ECLBDC52M4AA)
  ## Relational Model-Schema
  ![Logo](https://raw.githubusercontent.com/XeniasDimitris/DataBases/master/Relation-Model.png?token=AKROCQEJYYMKKANUC6KHJ6C52M3SS)
     
